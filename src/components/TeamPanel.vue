@@ -23,8 +23,8 @@
                 {{ "⚽ ".repeat(p.goals) }}
               </span>
 
-              <span v-if="p.yellowCards && p.yellowCards >= 2" class="text-xs">🟥</span>
-              <span v-else-if="p.yellowCards === 1" class="text-xs">🟨</span>
+              <span v-if="p.yellowCards && p.yellowCards >= 2" class="ml-2 text-xs">🟥</span>
+              <span v-else-if="p.yellowCards === 1" class="ml-2 text-xs">🟨</span>
             </div>
             <div class="text-xs text-gray-500">
               Sho: {{ p.attributes.shooting }} • Pac: {{ p.attributes.pace }}

@@ -5,6 +5,7 @@ export interface Attributes {
   shooting: number;
   passing: number;
   dribbling: number;
+  heading: number;
   defense: number;
   physical: number;
   height: number;

@@ -22,17 +22,29 @@ function applyFatigue(team: Team, intensity = 1.0) {
   team.players.forEach((p) => {
     if (!p.starting) return;
 
-    let baseLoss = 0.18;
+    let baseLoss = 0.01;
 
-    if (p.position === "FWD") baseLoss *= 1.4;
-    if (p.position === "MID") baseLoss *= 1.2;
-    if (p.position === "DEF") baseLoss *= 1.0;
-    if (p.position === "GK") baseLoss *= 0.6;
+    switch (p.position) {
+      case "FWD":
+      case "MID":
+        baseLoss *= 0.6;
+        break;
+      case "DEF":
+      case "GK":
+        baseLoss *= 0.5;
+        break;
+    }
 
     const totalLoss = baseLoss * intensity;
-
     p.stamina = Math.max(0, p.stamina - totalLoss);
   });
+}
+
+function headingSkill(p: Player) {
+  if (p.attributes.heading != null) return p.attributes.heading;
+  if (["FWD", "MID"].includes(p.position))
+    return p.attributes.shooting * 0.6 + p.attributes.physical * 0.4;
+  return p.attributes.physical * 0.3; // defensores quase não marcam
 }
 
 // Escolhe atacante com base em pesos de posição
@@ -71,24 +83,24 @@ export function simulateMinute(
 
   if (eventChance < 0.12 + diff) {
     result = doAttack(minute, home, away);
-    applyFatigue(home, 1.2);
-    applyFatigue(away, 1.0);
+    applyFatigue(home, 0.6);
+    applyFatigue(away, 0.5);
   } else if (eventChance > 0.88 - diff) {
     result = doAttack(minute, away, home);
-    applyFatigue(away, 1.2);
-    applyFatigue(home, 1.0);
+    applyFatigue(away, 0.6);
+    applyFatigue(home, 0.5);
   } else if (eventChance < 0.15) {
     result = doFoul(minute, home, away);
-    applyFatigue(home, 1.1);
-    applyFatigue(away, 1.1);
+    applyFatigue(home, 0.55);
+    applyFatigue(away, 0.55);
   } else if (eventChance < 0.2) {
     result = doCorner(minute, home, away);
-    applyFatigue(home, 1.3);
-    applyFatigue(away, 1.2);
+    applyFatigue(home, 0.65);
+    applyFatigue(away, 0.6);
   } else {
     result = doNeutral(minute, home, away);
-    applyFatigue(home, 0.9);
-    applyFatigue(away, 0.9);
+    applyFatigue(home, 0.45);
+    applyFatigue(away, 0.45);
   }
 
   return result;
@@ -188,8 +200,6 @@ function doFoul(minute: number, home: Team, away: Team): EventResult {
       text = TEXTS.MATCH.YELLOW_CARD(offender.name, team.name);
     }
 
-    offender.yellowCards = (offender.yellowCards ?? 0) + 1;
-
     return {
       minute,
       text,
@@ -212,20 +222,27 @@ function doCorner(minute: number, home: Team, away: Team): EventResult {
   const defending = attacking === home ? away : home;
   const taker = randomPlayer(attacking);
 
-  const tall = attacking.players
-    .filter((p) => p.starting && p.position !== "GK")
-    .sort((a, b) => b.attributes.height - a.attributes.height)[0];
+  const attackers = attacking.players.filter(
+    (p) => p.starting && ["FWD", "MID"].includes(p.position)
+  );
+
+  if (!attackers.length) return doNeutral(minute, home, away);
+
+  const tall = attackers
+    .sort((a, b) => {
+      const aPower = a.attributes.height * 0.5 + headingSkill(a);
+      const bPower = b.attributes.height * 0.5 + headingSkill(b);
+      return bPower - aPower;
+    })[0];
 
   const goalie = randomPlayer(defending, "GK");
 
-  const aerialPower =
-    (tall.attributes.height * 0.6 + tall.attributes.physical * 0.4) *
-      (tall.stamina / 100) +
+  const aerialPower = (tall.attributes.height * 0.6 + tall.attributes.physical * 0.4) *
+    (tall.stamina / 100) +
     Math.random() * 10;
 
-  const defensePower =
-    (goalie.attributes.defense * 0.7 + goalie.attributes.height * 0.3) *
-      (goalie.stamina / 100) +
+  const defensePower = (goalie.attributes.defense * 0.7 + goalie.attributes.height * 0.3) *
+    (goalie.stamina / 100) +
     Math.random() * 10;
 
   if (aerialPower > defensePower + 15)
