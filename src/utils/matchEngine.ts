@@ -181,6 +181,7 @@ function doFoul(minute: number, home: Team, away: Team): EventResult {
       minute,
       text: TEXTS.MATCH.YELLOW_CARD(offender.name, team.name),
       team: team.name,
+      playerName: offender.name,
       kind: "card",
     };
 
@@ -222,6 +223,7 @@ function doCorner(minute: number, home: Team, away: Team): EventResult {
         `${attacking.name} marca de cabeça!`,
       ),
       team: attacking.name,
+      playerName: tall.name,
       kind: "goal",
     };
 
