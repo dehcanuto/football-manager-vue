@@ -7,7 +7,7 @@
 
     <div class="space-y-2">
       <div
-        v-for="p in team.players.filter(p => p.starting)"
+        v-for="p in team.players.filter((p) => p.starting)"
         :key="p.id"
         class="flex items-center justify-between"
       >

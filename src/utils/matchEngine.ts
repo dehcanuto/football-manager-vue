@@ -35,10 +35,34 @@ function applyFatigue(team: Team, intensity = 1.0) {
   });
 }
 
+// Escolhe atacante com base em pesos de posição
+function pickWeightedAttacker(team: Team): Player {
+  const weights = {
+    FWD: 0.65,
+    MID: 0.25,
+    DEF: 0.09,
+    GK: 0.01,
+  };
+
+  const roll = Math.random();
+  let chosenPos = "FWD";
+
+  if (roll < weights.FWD) chosenPos = "FWD";
+  else if (roll < weights.FWD + weights.MID) chosenPos = "MID";
+  else if (roll < weights.FWD + weights.MID + weights.DEF) chosenPos = "DEF";
+  else chosenPos = "GK";
+
+  const pool = team.players.filter(
+    (p) => p.position === chosenPos && p.starting,
+  );
+  if (!pool.length) return randomPlayer(team); // fallback
+  return pick(pool);
+}
+
 export function simulateMinute(
   minute: number,
   home: Team,
-  away: Team
+  away: Team,
 ): EventResult {
   const diff = (avg(home, "shooting") - avg(away, "defense")) / 180;
   const eventChance = Math.random();
@@ -73,11 +97,22 @@ export function simulateMinute(
 function doAttack(
   minute: number,
   attacking: Team,
-  defending: Team
+  defending: Team,
 ): EventResult {
-  const striker = randomPlayer(attacking, "FWD");
+  const striker = pickWeightedAttacker(attacking);
   const keeper = randomPlayer(defending, "GK");
   const defender = randomPlayer(defending, "DEF");
+
+  // Impede os goleiros de atacarem
+  if (striker.position === "GK") {
+    // substitui o goleiro por um atacante aleatório
+    const alt = randomPlayer(attacking, "FWD") || randomPlayer(attacking);
+    return doAttack(
+      minute,
+      { ...attacking, players: [alt, ...attacking.players] },
+      defending,
+    );
+  }
 
   const staminaFactor = (striker.stamina / 100) * 0.9 + 0.1;
   const attackPower =
@@ -95,6 +130,7 @@ function doAttack(
       keeperFactor +
     Math.random() * 15;
 
+  // Gol normal
   if (attackPower > defensePower + 18) {
     return {
       minute,
@@ -105,6 +141,7 @@ function doAttack(
     };
   }
 
+  // Defesa do goleiro
   if (attackPower > defensePower + 5) {
     return {
       minute,
@@ -115,6 +152,7 @@ function doAttack(
     };
   }
 
+  // Lance neutro / perda de bola
   if (Math.random() < 0.18) {
     return {
       minute,
@@ -124,6 +162,7 @@ function doAttack(
     };
   }
 
+  // Chute pra fora
   return {
     minute,
     text: TEXTS.MATCH.OUT(striker.name, attacking.name),
@@ -157,9 +196,11 @@ function doCorner(minute: number, home: Team, away: Team): EventResult {
   const attacking = Math.random() < 0.5 ? home : away;
   const defending = attacking === home ? away : home;
   const taker = randomPlayer(attacking);
+
   const tall = attacking.players
-    .filter((p) => p.starting)
+    .filter((p) => p.starting && p.position !== "GK")
     .sort((a, b) => b.attributes.height - a.attributes.height)[0];
+
   const goalie = randomPlayer(defending, "GK");
 
   const aerialPower =
@@ -178,7 +219,7 @@ function doCorner(minute: number, home: Team, away: Team): EventResult {
       text: TEXTS.MATCH.GOAL_OPEN(
         tall.name,
         attacking.name,
-        `${attacking.name} marca de cabeça!`
+        `${attacking.name} marca de cabeça!`,
       ),
       team: attacking.name,
       kind: "goal",
@@ -224,7 +265,7 @@ function doNeutral(minute: number, home: Team, away: Team): EventResult {
   if (neutralRoll < 0.06)
     return {
       minute,
-      text: `${actingTeam.name} erra o passe e o ${opponent.name} recupera a posse.`,
+      text: TEXTS.MATCH.PASS_ERROR(actingTeam.name, opponent.name),
       team: opponent.name,
       kind: "none",
     };
@@ -232,7 +273,7 @@ function doNeutral(minute: number, home: Team, away: Team): EventResult {
   if (neutralRoll < 0.08)
     return {
       minute,
-      text: `Contra-ataque do ${actingTeam.name}, mas o ${opponent.name} bloqueia.`,
+      text: TEXTS.MATCH.COUNTER_ATTACK(actingTeam.name, opponent.name),
       team: actingTeam.name,
       kind: "none",
     };
@@ -240,7 +281,7 @@ function doNeutral(minute: number, home: Team, away: Team): EventResult {
   if (neutralRoll < 0.1)
     return {
       minute,
-      text: `${actingTeam.name} gira a bola, buscando espaço na defesa do ${opponent.name}.`,
+      text: TEXTS.MATCH.BALL_ROTATION(actingTeam.name, opponent.name),
       team: actingTeam.name,
       kind: "none",
     };
