@@ -10,6 +10,8 @@ export const TEXTS = {
       `Falta de ${player} (${team}) no meio-campo.`,
     YELLOW_CARD: (player: string, team: string) =>
       `🟨 Cartão amarelo para ${player} (${team}).`,
+    RED_CARD: (player: string, team: string) =>
+      `🟥 Cartão vermelho! ${player} (${team}) é expulso do jogo!`,
     CORNER: (taker: string, team: string) =>
       `🚩 Escanteio cobrado por ${taker} (${team}).`,
     OUT: (player: string, team: string) =>

@@ -176,14 +176,28 @@ function doFoul(minute: number, home: Team, away: Team): EventResult {
   const offender = randomPlayer(team);
   const cardChance = Math.random();
 
-  if (cardChance < 0.25)
+  if (cardChance < 0.25) {
+    let text: string;
+
+    // Se já tiver cartão amarelo, vira vermelho
+    if ((offender.yellowCards ?? 0) >= 1) {
+      text = TEXTS.MATCH.RED_CARD(offender.name, team.name);
+      // marca como não mais titular
+      offender.starting = false;
+    } else {
+      text = TEXTS.MATCH.YELLOW_CARD(offender.name, team.name);
+    }
+
+    offender.yellowCards = (offender.yellowCards ?? 0) + 1;
+
     return {
       minute,
-      text: TEXTS.MATCH.YELLOW_CARD(offender.name, team.name),
+      text,
       team: team.name,
       playerName: offender.name,
       kind: "card",
     };
+  }
 
   return {
     minute,
