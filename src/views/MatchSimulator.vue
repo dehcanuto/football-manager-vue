@@ -103,8 +103,8 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import TeamPanel from "./TeamPanel.vue";
-import TeamTacticsModal from "./TeamTacticsModal.vue";
+import TeamPanel from "@components/TeamPanel.vue";
+import TeamTacticsModal from "@components/TeamTacticsModal.vue";
 import { simulateMinute } from "@/utils/matchEngine";
 import { Sport, Nautico } from "@/data/teams";
 import type { EventResult, Team } from "@/types";

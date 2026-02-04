@@ -1,7 +1,7 @@
 <template>
-  <MatchSimulator />
+  <RouterView />
 </template>
 
 <script setup lang="ts">
-import MatchSimulator from "./components/MatchSimulator.vue";
+import { RouterView } from 'vue-router'
 </script>
