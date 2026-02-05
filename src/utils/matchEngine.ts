@@ -223,26 +223,27 @@ function doCorner(minute: number, home: Team, away: Team): EventResult {
   const taker = randomPlayer(attacking);
 
   const attackers = attacking.players.filter(
-    (p) => p.starting && ["FWD", "MID"].includes(p.position)
+    (p) => p.starting && ["FWD", "MID"].includes(p.position),
   );
 
   if (!attackers.length) return doNeutral(minute, home, away);
 
-  const tall = attackers
-    .sort((a, b) => {
-      const aPower = a.attributes.height * 0.5 + headingSkill(a);
-      const bPower = b.attributes.height * 0.5 + headingSkill(b);
-      return bPower - aPower;
-    })[0];
+  const tall = attackers.sort((a, b) => {
+    const aPower = a.attributes.height * 0.5 + headingSkill(a);
+    const bPower = b.attributes.height * 0.5 + headingSkill(b);
+    return bPower - aPower;
+  })[0];
 
   const goalie = randomPlayer(defending, "GK");
 
-  const aerialPower = (tall.attributes.height * 0.6 + tall.attributes.physical * 0.4) *
-    (tall.stamina / 100) +
+  const aerialPower =
+    (tall.attributes.height * 0.6 + tall.attributes.physical * 0.4) *
+      (tall.stamina / 100) +
     Math.random() * 10;
 
-  const defensePower = (goalie.attributes.defense * 0.7 + goalie.attributes.height * 0.3) *
-    (goalie.stamina / 100) +
+  const defensePower =
+    (goalie.attributes.defense * 0.7 + goalie.attributes.height * 0.3) *
+      (goalie.stamina / 100) +
     Math.random() * 10;
 
   if (aerialPower > defensePower + 15)
