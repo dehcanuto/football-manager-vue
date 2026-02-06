@@ -18,6 +18,7 @@
     "autoprefixer": "^10.4.14",
     "daisyui": "v4",
     "postcss": "^8.4.20",
+    "sass-embedded": "^1.97.3",
     "tailwindcss": "^3.4.0",
     "typescript": "^5.1.6",
     "vite": "^5.0.0"

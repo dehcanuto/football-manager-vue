@@ -42,15 +42,12 @@
           <div class="w-10 text-right text-sm">
             {{ Math.round(p.stamina) }}%
           </div>
-          <div class="w-24 bg-gray-200 rounded h-2">
-            <div
-              class="h-2 rounded"
-              :style="{
-                width: p.stamina + '%',
-                backgroundColor: staminaColor(p.stamina),
-              }"
-            ></div>
-          </div>
+          <progress
+            class="progress w-24"
+            :class="staminaColor(p.stamina)"
+            :value="p.stamina"
+            max="100"
+          ></progress>
         </div>
       </div>
     </div>
@@ -62,8 +59,8 @@ import type { Team } from "@/types";
 const props = defineProps<{ team: Team }>();
 
 function staminaColor(val: number) {
-  if (val > 66) return "#22c55e";
-  if (val > 33) return "#f59e0b";
-  return "#ef4444";
+  if (val > 66) return "progress-success";
+  if (val > 33) return "progress-warning";
+  return "progress-error";
 }
 </script>
