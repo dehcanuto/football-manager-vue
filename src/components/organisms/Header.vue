@@ -31,7 +31,15 @@ import Icon from "../atoms/Icon.vue";
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
           />
         </div>
-        <a class="btn btn-ghost text-xl">⚽ Football Manager</a>
+        <RouterLink to="/" class="btn btn-ghost">
+          <h1 class="flex flex-col items-center">
+            <img
+              alt="The Dugout - Football Manager"
+              src="@/assets/images/the-dugout-logo-1x.png"
+              class="w-24 -mt-5"
+            />
+          </h1>
+        </RouterLink>
       </div>
       <div class="navbar-center hidden lg:flex">
         <MenuList
@@ -43,33 +51,33 @@ import Icon from "../atoms/Icon.vue";
         <button class="btn btn-ghost btn-circle">
           <div class="indicator">
             <Icon name="notification" />
-            <span class="badge badge-xs badge-primary indicator-item"></span>
+            <!-- <span class="badge badge-xs badge-primary indicator-item"></span> -->
           </div>
         </button>
         <div class="dropdown dropdown-end">
           <div
             tabindex="0"
             role="button"
-            class="btn btn-ghost btn-circle avatar"
+            class="btn btn-ghost btn-circle"
           >
-            <div class="w-10 rounded-full">
-              <img
-                alt="Tailwind CSS Navbar component"
-                src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-              />
+            <div
+              class="flex items-center justify-center size-10 rounded-full border-4 border-white overflow-hidden shrink-0"
+              :style="{ backgroundColor: '#ff0000' }"
+            >
+              <span class="text-white">AC</span>
             </div>
           </div>
           <ul
             tabindex="0"
             class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
           >
-            <li>
+            <!-- <li>
               <a class="justify-between">
                 Profile
                 <span class="badge">New</span>
               </a>
             </li>
-            <li><a>Settings</a></li>
+            <li><a>Settings</a></li> -->
             <li><a>Logout</a></li>
           </ul>
         </div>

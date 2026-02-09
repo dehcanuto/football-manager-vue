@@ -33,7 +33,7 @@ const variants = {
 
     <div class="card-body relative z-10">
       <h2
-        class="card-title uppercase"
+        class="card-title uppercase mb-3"
         :class="{
           'text-center justify-center': centerTitle,
           'text-base-100': props.variant === 'primary',

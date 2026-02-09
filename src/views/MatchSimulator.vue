@@ -1,6 +1,6 @@
 <template>
   <div
-    class="min-h-screen p-6 bg-center bg-repeat bg-[url('@/assets/images/grass.png')] bg-[length:300px_300px]"
+    class="min-h-screen p-6 bg-center bg-repeat bg-[url('@/assets/images/grass.jpg')] bg-[length:300px_300px]"
   >
     <div class="grid grid-cols-12 gap-4">
       <div class="col-span-3">

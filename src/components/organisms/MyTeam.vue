@@ -2,18 +2,20 @@
 import BaseCard from "@components/molecules/BaseCard.vue";
 </script>
 <template>
-  <BaseCard centerTitle>
+  <BaseCard>
     <template #title>Meu Time</template>
     <template #content>
-      <div class="grid grid-cols-1 sm:grid-cols-3 my-3">
-        <div class="flex flex-col items-center text-center gap-3 mt-4">
-          <div
-            class="w-16 h-16 rounded-full border-4 border-white flex items-center justify-center overflow-hidden shrink-0"
-            :style="{ backgroundColor: '#ff0000' }"
-          >
-            <span class="text-2xl text-white font-bold"> N </span>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <div class="p-2 py-4 bg-base-100 rounded-xl">
+          <div class="flex flex-col items-center text-center gap-3 mt-4">
+            <div
+              class="w-16 h-16 rounded-full border-4 border-white flex items-center justify-center overflow-hidden shrink-0"
+              :style="{ backgroundColor: '#ff0000' }"
+            >
+              <span class="text-2xl text-white font-bold"> N </span>
+            </div>
+            <h2 class="text-2xl text-white font-bold">Náutico</h2>
           </div>
-          <h2 class="text-2xl text-white font-bold">Náutico</h2>
         </div>
         <div class="col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-3">
           <div class="flex flex-col justify-center">
