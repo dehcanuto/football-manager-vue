@@ -20,7 +20,9 @@ import { last_messages } from "@/data/last_messages";
               <Icon :name="message.icon" />
             </div>
             <div class="flex flex-col flex-grow ml-3 mr-10 gap-1">
-              <div class="text-primary text-sm font-medium">{{ message.title }}</div>
+              <div class="text-primary text-sm font-medium">
+                {{ message.title }}
+              </div>
               <div class="text-xs">{{ message.text }}</div>
             </div>
           </div>

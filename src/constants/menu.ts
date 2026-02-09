@@ -9,15 +9,15 @@ export const menuOptions: MenuItem[] = [
   {
     label: "Elenco",
     icon: "players",
-    path: "/elenco",
+    path: "#",
     children: [
       {
         label: "Formação",
-        path: "/",
+        path: "/elenco/formacao",
       },
       {
         label: "Treinamento",
-        path: "/",
+        path: "/elenco/treinamento",
       },
     ],
   },
@@ -28,15 +28,15 @@ export const menuOptions: MenuItem[] = [
     children: [
       {
         label: "Estádio",
-        path: "/",
+        path: "/clube/estadio",
       },
       {
         label: "Sala de Troféus",
-        path: "/",
+        path: "/clube/sala-trofeus",
       },
       {
         label: "Imprensa",
-        path: "/",
+        path: "/clube/imprensa",
       },
     ],
   },

@@ -1,7 +1,13 @@
 <script setup lang="ts">
 const props = defineProps<{
   centerTitle?: boolean;
-  variant?: "glass" | "primary" | "default" | "black" | "messageImage" | "stadiumImage";
+  variant?:
+    | "glass"
+    | "primary"
+    | "default"
+    | "black"
+    | "messageImage"
+    | "stadiumImage";
   bgImage?: string;
 }>();
 
@@ -23,7 +29,9 @@ const variants = {
     :class="variants[variant || 'default']"
   >
     <div
-      v-if="props.variant === 'stadiumImage' || props.variant === 'messageImage'"
+      v-if="
+        props.variant === 'stadiumImage' || props.variant === 'messageImage'
+      "
       class="absolute inset-0 pointer-events-none bg-black/80"
     ></div>
 

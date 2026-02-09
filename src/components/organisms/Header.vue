@@ -55,11 +55,7 @@ import Icon from "../atoms/Icon.vue";
           </div>
         </button>
         <div class="dropdown dropdown-end">
-          <div
-            tabindex="0"
-            role="button"
-            class="btn btn-ghost btn-circle"
-          >
+          <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
             <div
               class="flex items-center justify-center size-10 rounded-full border-4 border-white overflow-hidden shrink-0"
               :style="{ backgroundColor: '#ff0000' }"
