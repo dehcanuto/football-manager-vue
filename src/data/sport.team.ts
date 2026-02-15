@@ -80,7 +80,7 @@ export const Sport: Team = {
     },
     {
       id: 5,
-      shirtNumber: '?',
+      shirtNumber: "?",
       name: "Felipinho",
       position: "DEF",
       stamina: 100,
@@ -207,7 +207,7 @@ export const Sport: Team = {
     // Reservas
     {
       id: 12,
-      shirtNumber: '?',
+      shirtNumber: "?",
       name: "Denis",
       position: "GK",
       stamina: 100,
@@ -225,7 +225,7 @@ export const Sport: Team = {
     },
     {
       id: 13,
-      shirtNumber: '?',
+      shirtNumber: "?",
       name: "Adriano",
       position: "GK",
       stamina: 100,
@@ -243,7 +243,7 @@ export const Sport: Team = {
     },
     {
       id: 14,
-      shirtNumber: '?',
+      shirtNumber: "?",
       name: "Ítalo Lucas",
       position: "DEF",
       stamina: 100,
@@ -261,7 +261,7 @@ export const Sport: Team = {
     },
     {
       id: 15,
-      shirtNumber: '?',
+      shirtNumber: "?",
       name: "Patrick",
       position: "DEF",
       stamina: 100,

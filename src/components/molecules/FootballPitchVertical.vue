@@ -41,9 +41,7 @@ const formationTatics = computed(() => {
       <span>Escalação</span>
       <h4 class="text-4xl font-bold mb-4">{{ formationTatics }}</h4>
     </div>
-    <div
-      class="football-field"
-    >
+    <div class="football-field">
       <div id="escalacao">
         <div style="height: 105px"></div>
         <div id="atacantes">
@@ -52,7 +50,7 @@ const formationTatics = computed(() => {
             :key="player.id"
             class="player"
           >
-            <div class="numero-camisa">{{ player.id }}</div>
+            <div class="numero-camisa" :data-tip="player.name">{{ player.shirtNumber }}</div>
           </div>
         </div>
         <div id="meias">
@@ -61,7 +59,7 @@ const formationTatics = computed(() => {
             :key="player.id"
             class="player"
           >
-            <div class="numero-camisa">{{ player.id }}</div>
+            <div class="numero-camisa" :data-tip="player.name">{{ player.shirtNumber }}</div>
           </div>
         </div>
         <div id="volantes">
@@ -70,14 +68,14 @@ const formationTatics = computed(() => {
             :key="player.id"
             class="player"
           >
-            <div class="numero-camisa">{{ player.id }}</div>
+            <div class="numero-camisa" :data-tip="player.name">{{ player.shirtNumber }}</div>
           </div>
         </div>
         <div id="laterais">
           <template v-for="(player, index) in lineup.laterais" :key="player.id">
             <div v-if="index === 1" class="w-[150px] h-10 rounded"></div>
             <div class="player">
-              <div class="numero-camisa">{{ player.id }}</div>
+              <div class="numero-camisa" :data-tip="player.name">{{ player.shirtNumber }}</div>
             </div>
           </template>
         </div>
@@ -87,7 +85,7 @@ const formationTatics = computed(() => {
             :key="player.id"
             class="player"
           >
-            <div class="numero-camisa">{{ player.id }}</div>
+            <div class="numero-camisa" :data-tip="player.name">{{ player.shirtNumber }}</div>
           </div>
         </div>
         <div id="goleiro" style="margin: auto; display: flex">
@@ -96,7 +94,7 @@ const formationTatics = computed(() => {
             :key="player.id"
             class="player"
           >
-            <div class="numero-camisa">{{ player.id }}</div>
+            <div class="numero-camisa" :data-tip="player.name">{{ player.shirtNumber }}</div>
           </div>
         </div>
       </div>
@@ -246,6 +244,8 @@ const formationTatics = computed(() => {
     .numero-camisa {
       margin: 4px;
       font-size: 0.9rem;
+      cursor: default;
+      @apply tooltip;
     }
 
     &:hover {
