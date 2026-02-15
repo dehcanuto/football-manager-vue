@@ -10,14 +10,21 @@ interface Team {
   goalsFor: number;
   goalsAgainst: number;
   goalDifference: number;
-  color?: string;
   logo?: string;
 }
 
-defineProps<{
+const props = defineProps<{
   season?: number;
   teams: Team[];
+  promoted?: number;
+  relegated?: number;
 }>();
+
+const getTeamStatusColor = (position: number): string => {
+  if (props.promoted && position <= props.promoted) return "#3b82f6";
+  if (props.relegated && position > props.teams.length - props.relegated) return "#ef4444";
+  return "transparent";
+};
 </script>
 
 <template>
@@ -50,8 +57,8 @@ defineProps<{
 
           <td class="flex items-center gap-2">
             <div
-              class="h-5 w-1 rounded-full"
-              :style="{ backgroundColor: team.color || '#999' }"
+              class="h-5 w-1 -ml-2.5 rounded-full"
+              :style="{ backgroundColor: getTeamStatusColor(team.position) }"
             ></div>
 
             <img
@@ -76,8 +83,8 @@ defineProps<{
               team.goalDifference > 0
                 ? 'text-green-400'
                 : team.goalDifference < 0
-                  ? 'text-red-400'
-                  : 'text-gray-300'
+                ? 'text-red-400'
+                : 'text-gray-300'
             "
           >
             {{ team.goalDifference }}

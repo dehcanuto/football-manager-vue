@@ -8,7 +8,7 @@ import { classificacaoRanking } from "@/data/classificacao";
   <BaseCard variant="stadiumImage">
     <template #title>Classificação</template>
     <template #content>
-      <LeagueTable :teams="classificacaoRanking" />
+      <LeagueTable :teams="classificacaoRanking" :promoted="2" :relegated="2" />
     </template>
   </BaseCard>
 </template>
