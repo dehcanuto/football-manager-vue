@@ -42,7 +42,7 @@ const formationTatics = computed(() => {
       <h4 class="text-4xl font-bold mb-4">{{ formationTatics }}</h4>
     </div>
     <div
-      class="relative w-[320px] h-[500px] bg-green-600 border-[6px] border-white mx-auto rounded-lg overflow-hidden shadow-xl"
+      class="football-field"
     >
       <div id="escalacao">
         <div style="height: 105px"></div>
@@ -173,6 +173,17 @@ const formationTatics = computed(() => {
 </template>
 
 <style scoped lang="scss">
+.football-field {
+  @apply relative w-[320px] h-[500px] bg-green-600 border-[6px] border-white mx-auto rounded-lg overflow-hidden shadow-xl;
+  background: repeating-linear-gradient(
+    0deg,
+    #1b9a4b 0px,
+    #1b9a4b 40px,
+    #16a34a 40px,
+    #16a34a 80px
+  );
+}
+
 #escalacao {
   --primary: #7580ff;
 
