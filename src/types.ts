@@ -1,4 +1,10 @@
-export type Position = "GK" | "DEF" | "MID" | "FWD";
+// GK — goleiro
+// DEF — zagueiro
+// LAT — laterais
+// DM — volante
+// MID — meia ofensivo
+// FWD — atacantes
+export type Position = "GK" | "DEF" | "LAT" | "MID" | "DM" | "FWD";
 
 export interface Attributes {
   pace: number;
@@ -13,6 +19,7 @@ export interface Attributes {
 
 export interface Player {
   id: number;
+  shirtNumber: number;
   name: string;
   position: Position;
   attributes: Attributes;

@@ -8,6 +8,7 @@ export const Nautico: Team = {
     // Titulares
     {
       id: 1,
+      shirtNumber: 1,
       name: "Muriel",
       position: "GK",
       stamina: 100,
@@ -25,8 +26,9 @@ export const Nautico: Team = {
     },
     {
       id: 2,
+      shirtNumber: 2,
       name: "Arnaldo",
-      position: "DEF",
+      position: "LAT",
       stamina: 100,
       starting: true,
       attributes: {
@@ -42,6 +44,7 @@ export const Nautico: Team = {
     },
     {
       id: 3,
+      shirtNumber: 25,
       name: "Mateus Silva",
       position: "DEF",
       stamina: 100,
@@ -59,6 +62,7 @@ export const Nautico: Team = {
     },
     {
       id: 4,
+      shirtNumber: 23,
       name: "Igor Fernandes",
       position: "DEF",
       stamina: 100,
@@ -76,8 +80,9 @@ export const Nautico: Team = {
     },
     {
       id: 5,
+      shirtNumber: 6,
       name: "Yuri Silva",
-      position: "DEF",
+      position: "LAT",
       stamina: 100,
       starting: true,
       attributes: {
@@ -93,8 +98,9 @@ export const Nautico: Team = {
     },
     {
       id: 6,
+      shirtNumber: 41,
       name: "Samuel",
-      position: "MID",
+      position: "DM",
       stamina: 100,
       starting: true,
       attributes: {
@@ -110,8 +116,9 @@ export const Nautico: Team = {
     },
     {
       id: 7,
-      name: "Wenderson",
-      position: "MID",
+      shirtNumber: 40,
+      name: "Ramon Carvalho",
+      position: "DM",
       stamina: 100,
       starting: true,
       attributes: {
@@ -127,6 +134,7 @@ export const Nautico: Team = {
     },
     {
       id: 8,
+      shirtNumber: 10,
       name: "Dodô",
       position: "MID",
       stamina: 100,
@@ -144,6 +152,7 @@ export const Nautico: Team = {
     },
     {
       id: 9,
+      shirtNumber: 7,
       name: "Vinícius",
       position: "FWD",
       stamina: 100,
@@ -161,6 +170,7 @@ export const Nautico: Team = {
     },
     {
       id: 10,
+      shirtNumber: 29,
       name: "Júnior Todinho",
       position: "FWD",
       stamina: 100,
@@ -178,6 +188,7 @@ export const Nautico: Team = {
     },
     {
       id: 11,
+      shirtNumber: 9,
       name: "Paulo Sérgio",
       position: "FWD",
       stamina: 100,
@@ -196,6 +207,25 @@ export const Nautico: Team = {
     // Reservas
     {
       id: 12,
+      shirtNumber: 55,
+      name: "Gaston Curuceaca",
+      position: "GK",
+      stamina: 100,
+      starting: false,
+      attributes: {
+        pace: 18,
+        shooting: 10,
+        passing: 40,
+        dribbling: 12,
+        defense: 45,
+        physical: 80,
+        height: 190,
+        heading: 0,
+      },
+    },
+    {
+      id: 12,
+      shirtNumber: 13,
       name: "Gabriel Índio",
       position: "DEF",
       stamina: 100,
@@ -213,6 +243,7 @@ export const Nautico: Team = {
     },
     {
       id: 13,
+      shirtNumber: 43,
       name: "Wanderson",
       position: "MID",
       stamina: 100,
@@ -230,6 +261,7 @@ export const Nautico: Team = {
     },
     {
       id: 14,
+      shirtNumber: 5,
       name: "Auremir",
       position: "MID",
       stamina: 100,
@@ -247,6 +279,7 @@ export const Nautico: Team = {
     },
     {
       id: 15,
+      shirtNumber: 27,
       name: "Luiz Felipe",
       position: "DEF",
       stamina: 100,
@@ -264,6 +297,7 @@ export const Nautico: Team = {
     },
     {
       id: 16,
+      shirtNumber: 98,
       name: "Felipe Saraiva",
       position: "FWD",
       stamina: 100,
@@ -281,6 +315,7 @@ export const Nautico: Team = {
     },
     {
       id: 17,
+      shirtNumber: 0,
       name: "Pedro Ricardo",
       position: "MID",
       stamina: 100,
@@ -298,6 +333,7 @@ export const Nautico: Team = {
     },
     {
       id: 18,
+      shirtNumber: 0,
       name: "Guilherme Ramos",
       position: "DEF",
       stamina: 100,
@@ -315,6 +351,7 @@ export const Nautico: Team = {
     },
     {
       id: 19,
+      shirtNumber: 0,
       name: "Kayon",
       position: "FWD",
       stamina: 100,
@@ -332,6 +369,7 @@ export const Nautico: Team = {
     },
     {
       id: 20,
+      shirtNumber: 31,
       name: "Rosa",
       position: "MID",
       stamina: 100,
@@ -349,6 +387,7 @@ export const Nautico: Team = {
     },
     {
       id: 21,
+      shirtNumber: 34,
       name: "Samuel Otusanya",
       position: "FWD",
       stamina: 100,

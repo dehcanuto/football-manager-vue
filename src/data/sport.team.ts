@@ -8,6 +8,7 @@ export const Sport: Team = {
     // Titulares
     {
       id: 1,
+      shirtNumber: 1,
       name: "Halls",
       position: "GK",
       stamina: 100,
@@ -25,6 +26,7 @@ export const Sport: Team = {
     },
     {
       id: 2,
+      shirtNumber: 2,
       name: "Matheus Alexandre",
       position: "DEF",
       stamina: 100,
@@ -42,6 +44,7 @@ export const Sport: Team = {
     },
     {
       id: 3,
+      shirtNumber: 3,
       name: "Marcelo Ajul",
       position: "DEF",
       stamina: 100,
@@ -59,6 +62,7 @@ export const Sport: Team = {
     },
     {
       id: 4,
+      shirtNumber: 40,
       name: "Ramon Menezes",
       position: "DEF",
       stamina: 100,
@@ -76,6 +80,7 @@ export const Sport: Team = {
     },
     {
       id: 5,
+      shirtNumber: '?',
       name: "Felipinho",
       position: "DEF",
       stamina: 100,
@@ -93,6 +98,7 @@ export const Sport: Team = {
     },
     {
       id: 6,
+      shirtNumber: 23,
       name: "Zé Gabriel",
       position: "MID",
       stamina: 100,
@@ -110,6 +116,7 @@ export const Sport: Team = {
     },
     {
       id: 7,
+      shirtNumber: 48,
       name: "Pedro Martins",
       position: "MID",
       stamina: 100,
@@ -127,6 +134,7 @@ export const Sport: Team = {
     },
     {
       id: 8,
+      shirtNumber: 8,
       name: "Max Alves",
       position: "MID",
       stamina: 100,
@@ -144,6 +152,7 @@ export const Sport: Team = {
     },
     {
       id: 9,
+      shirtNumber: 30,
       name: "Chrystian Barletta",
       position: "FWD",
       stamina: 100,
@@ -161,6 +170,7 @@ export const Sport: Team = {
     },
     {
       id: 10,
+      shirtNumber: 11,
       name: "Gustavo Maia",
       position: "FWD",
       stamina: 100,
@@ -178,6 +188,7 @@ export const Sport: Team = {
     },
     {
       id: 11,
+      shirtNumber: 9,
       name: "Gustavo Coutinho",
       position: "FWD",
       stamina: 100,
@@ -196,6 +207,7 @@ export const Sport: Team = {
     // Reservas
     {
       id: 12,
+      shirtNumber: '?',
       name: "Denis",
       position: "GK",
       stamina: 100,
@@ -213,6 +225,7 @@ export const Sport: Team = {
     },
     {
       id: 13,
+      shirtNumber: '?',
       name: "Adriano",
       position: "GK",
       stamina: 100,
@@ -230,6 +243,7 @@ export const Sport: Team = {
     },
     {
       id: 14,
+      shirtNumber: '?',
       name: "Ítalo Lucas",
       position: "DEF",
       stamina: 100,
@@ -247,6 +261,7 @@ export const Sport: Team = {
     },
     {
       id: 15,
+      shirtNumber: '?',
       name: "Patrick",
       position: "DEF",
       stamina: 100,

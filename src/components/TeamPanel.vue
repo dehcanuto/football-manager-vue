@@ -1,3 +1,10 @@
+<script setup lang="ts">
+import type { Team } from "@/types";
+import Stamina from "@components/atoms/Stamina.vue";
+
+const props = defineProps<{ team: Team }>();
+</script>
+
 <template>
   <div class="bg-white rounded shadow p-3">
     <div class="mb-4">
@@ -38,29 +45,8 @@
           </div>
         </div>
 
-        <div class="flex items-center gap-3">
-          <div class="w-10 text-right text-sm">
-            {{ Math.round(p.stamina) }}%
-          </div>
-          <progress
-            class="progress w-24"
-            :class="staminaColor(p.stamina)"
-            :value="p.stamina"
-            max="100"
-          ></progress>
-        </div>
+        <Stamina :value="p.stamina" />
       </div>
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-import type { Team } from "@/types";
-const props = defineProps<{ team: Team }>();
-
-function staminaColor(val: number) {
-  if (val > 66) return "progress-success";
-  if (val > 33) return "progress-warning";
-  return "progress-error";
-}
-</script>
