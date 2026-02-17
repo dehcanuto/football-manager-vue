@@ -4,10 +4,12 @@ import DashboardView from "@/views/Dashboard.vue";
 
 import TeamFormationView from "@/views/TeamSquad/TeamFormationView.vue";
 import TeamTrainingView from "@/views/TeamSquad/TeamTrainingView.vue";
+import TeamTaticsView from "@/views/TeamSquad/TeamTaticsView.vue";
 
 import StadiumView from "@/views/Team/StadiumView.vue";
 import TrophyRoomView from "@/views/Team/TrophyRoomView.vue";
 import PressRoomView from "@/views/Team/PressRoomView.vue";
+import PlayerView from "@/views/Team/PlayerView.vue";
 
 import FinancesView from "@/views/Finances/FinancesView.vue";
 import TransferMarketView from "@/views/TransferMarket/TransferMarketView.vue";
@@ -32,6 +34,7 @@ const router = createRouter({
       path: "/elenco",
       children: [
         { path: "formacao", component: TeamFormationView },
+        { path: "taticas", component: TeamTaticsView },
         { path: "treinamento", component: TeamTrainingView },
       ],
     },
@@ -54,6 +57,10 @@ const router = createRouter({
     {
       path: "/match",
       component: MatchView,
+    },
+    {
+      path: "/jogador/:id",
+      component: PlayerView,
     },
   ],
 });
