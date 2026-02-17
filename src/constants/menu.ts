@@ -1,4 +1,4 @@
-import { MenuItem } from "@/types/menu";
+import { MenuItem } from "@/models/menu";
 
 export const menuOptions: MenuItem[] = [
   {
@@ -14,6 +14,10 @@ export const menuOptions: MenuItem[] = [
       {
         label: "Formação",
         path: "/elenco/formacao",
+      },
+      {
+        label: "Táticas",
+        path: "/elenco/taticas",
       },
       {
         label: "Treinamento",
