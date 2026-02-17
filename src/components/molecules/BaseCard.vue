@@ -39,7 +39,7 @@ const variants = {
       <slot name="image" />
     </figure>
 
-    <div class="card-body relative z-10">
+    <div class="card-body relative">
       <h2
         class="card-title uppercase mb-3"
         :class="{
