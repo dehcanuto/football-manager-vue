@@ -1,4 +1,4 @@
-import { Team } from "@/types";
+import { Team } from "@/models/team";
 
 export const Nautico: Team = {
   name: "Náutico",
@@ -11,7 +11,10 @@ export const Nautico: Team = {
       shirtNumber: 1,
       name: "Muriel",
       position: "GK",
-      stamina: 100,
+      status: {
+        stamina: 100,
+        morale: 100,
+      },
       starting: true,
       attributes: {
         pace: 18,
@@ -23,13 +26,24 @@ export const Nautico: Team = {
         height: 190,
         heading: 0,
       },
+      nationality: "",
+      age: 0,
+      finances: {
+        salary: 100000,
+        value: 100000,
+        contractTime: 2,
+      },
+      trainingFocus: "",
     },
     {
       id: 2,
       shirtNumber: 2,
       name: "Arnaldo",
       position: "LAT",
-      stamina: 100,
+      status: {
+        stamina: 100,
+        morale: 100,
+      },
       starting: true,
       attributes: {
         pace: 70,
@@ -41,13 +55,24 @@ export const Nautico: Team = {
         height: 178,
         heading: 15,
       },
+      nationality: "",
+      age: 0,
+      finances: {
+        salary: 100000,
+        value: 100000,
+        contractTime: 2,
+      },
+      trainingFocus: "",
     },
     {
       id: 3,
       shirtNumber: 25,
       name: "Mateus Silva",
       position: "DEF",
-      stamina: 100,
+      status: {
+        stamina: 100,
+        morale: 100,
+      },
       starting: true,
       attributes: {
         pace: 68,
@@ -59,13 +84,24 @@ export const Nautico: Team = {
         height: 185,
         heading: 20,
       },
+      nationality: "",
+      age: 0,
+      finances: {
+        salary: 100000,
+        value: 100000,
+        contractTime: 2,
+      },
+      trainingFocus: "",
     },
     {
       id: 4,
       shirtNumber: 23,
       name: "Igor Fernandes",
       position: "DEF",
-      stamina: 100,
+      status: {
+        stamina: 100,
+        morale: 100,
+      },
       starting: true,
       attributes: {
         pace: 67,
@@ -77,13 +113,24 @@ export const Nautico: Team = {
         height: 183,
         heading: 13,
       },
+      nationality: "",
+      age: 0,
+      finances: {
+        salary: 100000,
+        value: 100000,
+        contractTime: 2,
+      },
+      trainingFocus: "",
     },
     {
       id: 5,
       shirtNumber: 6,
       name: "Yuri Silva",
       position: "LAT",
-      stamina: 100,
+      status: {
+        stamina: 100,
+        morale: 100,
+      },
       starting: true,
       attributes: {
         pace: 68,
@@ -95,13 +142,24 @@ export const Nautico: Team = {
         height: 180,
         heading: 18,
       },
+      nationality: "",
+      age: 0,
+      finances: {
+        salary: 100000,
+        value: 100000,
+        contractTime: 2,
+      },
+      trainingFocus: "",
     },
     {
       id: 6,
       shirtNumber: 41,
       name: "Samuel",
       position: "DM",
-      stamina: 100,
+      status: {
+        stamina: 100,
+        morale: 100,
+      },
       starting: true,
       attributes: {
         pace: 72,
@@ -113,13 +171,24 @@ export const Nautico: Team = {
         height: 175,
         heading: 50,
       },
+      nationality: "",
+      age: 0,
+      finances: {
+        salary: 100000,
+        value: 100000,
+        contractTime: 2,
+      },
+      trainingFocus: "",
     },
     {
       id: 7,
       shirtNumber: 40,
       name: "Ramon Carvalho",
       position: "DM",
-      stamina: 100,
+      status: {
+        stamina: 100,
+        morale: 100,
+      },
       starting: true,
       attributes: {
         pace: 75,
@@ -131,13 +200,24 @@ export const Nautico: Team = {
         height: 176,
         heading: 67,
       },
+      nationality: "",
+      age: 0,
+      finances: {
+        salary: 100000,
+        value: 100000,
+        contractTime: 2,
+      },
+      trainingFocus: "",
     },
     {
       id: 8,
       shirtNumber: 10,
       name: "Dodô",
       position: "MID",
-      stamina: 100,
+      status: {
+        stamina: 100,
+        morale: 100,
+      },
       starting: true,
       attributes: {
         pace: 80,
@@ -149,13 +229,24 @@ export const Nautico: Team = {
         height: 174,
         heading: 73,
       },
+      nationality: "",
+      age: 0,
+      finances: {
+        salary: 100000,
+        value: 100000,
+        contractTime: 2,
+      },
+      trainingFocus: "",
     },
     {
       id: 9,
       shirtNumber: 7,
       name: "Vinícius",
       position: "FWD",
-      stamina: 100,
+      status: {
+        stamina: 100,
+        morale: 100,
+      },
       starting: true,
       attributes: {
         pace: 85,
@@ -167,13 +258,24 @@ export const Nautico: Team = {
         height: 178,
         heading: 77,
       },
+      nationality: "",
+      age: 0,
+      finances: {
+        salary: 100000,
+        value: 100000,
+        contractTime: 2,
+      },
+      trainingFocus: "",
     },
     {
       id: 10,
       shirtNumber: 29,
       name: "Júnior Todinho",
       position: "FWD",
-      stamina: 100,
+      status: {
+        stamina: 100,
+        morale: 100,
+      },
       starting: true,
       attributes: {
         pace: 80,
@@ -185,13 +287,24 @@ export const Nautico: Team = {
         height: 177,
         heading: 72,
       },
+      nationality: "",
+      age: 0,
+      finances: {
+        salary: 100000,
+        value: 100000,
+        contractTime: 2,
+      },
+      trainingFocus: "",
     },
     {
       id: 11,
       shirtNumber: 9,
       name: "Paulo Sérgio",
       position: "FWD",
-      stamina: 100,
+      status: {
+        stamina: 100,
+        morale: 100,
+      },
       starting: true,
       attributes: {
         pace: 82,
@@ -203,6 +316,14 @@ export const Nautico: Team = {
         height: 180,
         heading: 77,
       },
+      nationality: "",
+      age: 0,
+      finances: {
+        salary: 100000,
+        value: 100000,
+        contractTime: 2,
+      },
+      trainingFocus: "",
     },
     // Reservas
     {
@@ -210,7 +331,10 @@ export const Nautico: Team = {
       shirtNumber: 55,
       name: "Gaston Curuceaca",
       position: "GK",
-      stamina: 100,
+      status: {
+        stamina: 100,
+        morale: 100,
+      },
       starting: false,
       attributes: {
         pace: 18,
@@ -222,13 +346,24 @@ export const Nautico: Team = {
         height: 190,
         heading: 0,
       },
+      nationality: "",
+      age: 0,
+      finances: {
+        salary: 100000,
+        value: 100000,
+        contractTime: 2,
+      },
+      trainingFocus: "",
     },
     {
-      id: 12,
+      id: 13,
       shirtNumber: 13,
       name: "Gabriel Índio",
       position: "DEF",
-      stamina: 100,
+      status: {
+        stamina: 100,
+        morale: 100,
+      },
       starting: false,
       attributes: {
         pace: 68,
@@ -240,13 +375,24 @@ export const Nautico: Team = {
         height: 182,
         heading: 20,
       },
+      nationality: "",
+      age: 0,
+      finances: {
+        salary: 100000,
+        value: 100000,
+        contractTime: 2,
+      },
+      trainingFocus: "",
     },
     {
-      id: 13,
+      id: 14,
       shirtNumber: 43,
       name: "Wanderson",
       position: "MID",
-      stamina: 100,
+      status: {
+        stamina: 100,
+        morale: 100,
+      },
       starting: false,
       attributes: {
         pace: 74,
@@ -258,13 +404,24 @@ export const Nautico: Team = {
         height: 175,
         heading: 67,
       },
+      nationality: "",
+      age: 0,
+      finances: {
+        salary: 100000,
+        value: 100000,
+        contractTime: 2,
+      },
+      trainingFocus: "",
     },
     {
-      id: 14,
+      id: 15,
       shirtNumber: 5,
       name: "Auremir",
       position: "MID",
-      stamina: 100,
+      status: {
+        stamina: 100,
+        morale: 100,
+      },
       starting: false,
       attributes: {
         pace: 70,
@@ -276,13 +433,24 @@ export const Nautico: Team = {
         height: 178,
         heading: 70,
       },
+      nationality: "",
+      age: 0,
+      finances: {
+        salary: 100000,
+        value: 100000,
+        contractTime: 2,
+      },
+      trainingFocus: "",
     },
     {
-      id: 15,
+      id: 16,
       shirtNumber: 27,
       name: "Luiz Felipe",
       position: "DEF",
-      stamina: 100,
+      status: {
+        stamina: 100,
+        morale: 100,
+      },
       starting: false,
       attributes: {
         pace: 67,
@@ -294,13 +462,24 @@ export const Nautico: Team = {
         height: 184,
         heading: 0,
       },
+      nationality: "",
+      age: 0,
+      finances: {
+        salary: 100000,
+        value: 100000,
+        contractTime: 2,
+      },
+      trainingFocus: "",
     },
     {
-      id: 16,
+      id: 17,
       shirtNumber: 98,
       name: "Felipe Saraiva",
       position: "FWD",
-      stamina: 100,
+      status: {
+        stamina: 100,
+        morale: 100,
+      },
       starting: false,
       attributes: {
         pace: 78,
@@ -312,13 +491,24 @@ export const Nautico: Team = {
         height: 179,
         heading: 77,
       },
+      nationality: "",
+      age: 0,
+      finances: {
+        salary: 100000,
+        value: 100000,
+        contractTime: 2,
+      },
+      trainingFocus: "",
     },
     {
-      id: 17,
+      id: 18,
       shirtNumber: 0,
       name: "Pedro Ricardo",
       position: "MID",
-      stamina: 100,
+      status: {
+        stamina: 100,
+        morale: 100,
+      },
       starting: false,
       attributes: {
         pace: 71,
@@ -330,13 +520,24 @@ export const Nautico: Team = {
         height: 176,
         heading: 76,
       },
+      nationality: "",
+      age: 0,
+      finances: {
+        salary: 100000,
+        value: 100000,
+        contractTime: 2,
+      },
+      trainingFocus: "",
     },
     {
-      id: 18,
+      id: 19,
       shirtNumber: 0,
       name: "Guilherme Ramos",
       position: "DEF",
-      stamina: 100,
+      status: {
+        stamina: 100,
+        morale: 100,
+      },
       starting: false,
       attributes: {
         pace: 66,
@@ -348,13 +549,24 @@ export const Nautico: Team = {
         height: 182,
         heading: 70,
       },
+      nationality: "",
+      age: 0,
+      finances: {
+        salary: 100000,
+        value: 100000,
+        contractTime: 2,
+      },
+      trainingFocus: "",
     },
     {
-      id: 19,
+      id: 20,
       shirtNumber: 0,
       name: "Kayon",
       position: "FWD",
-      stamina: 100,
+      status: {
+        stamina: 100,
+        morale: 100,
+      },
       starting: false,
       attributes: {
         pace: 80,
@@ -366,13 +578,24 @@ export const Nautico: Team = {
         height: 179,
         heading: 73,
       },
+      nationality: "",
+      age: 0,
+      finances: {
+        salary: 100000,
+        value: 100000,
+        contractTime: 2,
+      },
+      trainingFocus: "",
     },
     {
-      id: 20,
+      id: 21,
       shirtNumber: 31,
       name: "Rosa",
       position: "MID",
-      stamina: 100,
+      status: {
+        stamina: 100,
+        morale: 100,
+      },
       starting: false,
       attributes: {
         pace: 72,
@@ -384,13 +607,24 @@ export const Nautico: Team = {
         height: 175,
         heading: 67,
       },
+      nationality: "",
+      age: 0,
+      finances: {
+        salary: 100000,
+        value: 100000,
+        contractTime: 2,
+      },
+      trainingFocus: "",
     },
     {
-      id: 21,
+      id: 22,
       shirtNumber: 34,
       name: "Samuel Otusanya",
       position: "FWD",
-      stamina: 100,
+      status: {
+        stamina: 100,
+        morale: 100,
+      },
       starting: false,
       attributes: {
         pace: 81,
@@ -402,6 +636,14 @@ export const Nautico: Team = {
         height: 181,
         heading: 66,
       },
+      nationality: "",
+      age: 0,
+      finances: {
+        salary: 100000,
+        value: 100000,
+        contractTime: 2,
+      },
+      trainingFocus: "",
     },
   ],
 };

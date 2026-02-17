@@ -1,4 +1,4 @@
-import { MessagesType } from "@/types/messages";
+import { MessagesType } from "@/models/messages";
 
 export const last_messages: MessagesType[] = [
   {

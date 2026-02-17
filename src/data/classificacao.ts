@@ -1,4 +1,6 @@
-export const classificacaoRanking = [
+import { TeamRankingType } from "@/models/team";
+
+export const classificacaoRanking: TeamRankingType[] = [
   {
     position: 1,
     name: "Náutico",
