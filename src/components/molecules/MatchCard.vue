@@ -1,20 +1,16 @@
 <script setup lang="ts">
+interface MatchStatus {
+  name: string;
+  color: string;
+  logo?: string;
+  link?: string;
+  score?: number;
+}
+
 const props = defineProps<{
   small?: boolean;
-  home: {
-    name: string;
-    color: string;
-    logo?: string;
-    link?: string;
-    score?: number;
-  };
-  away: {
-    name: string;
-    color: string;
-    logo?: string;
-    link?: string;
-    score?: number;
-  };
+  home: MatchStatus;
+  away: MatchStatus;
 }>();
 </script>
 

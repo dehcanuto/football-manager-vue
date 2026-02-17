@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { MenuItem } from "@/types/menu";
+import { MenuItem } from "@/models/menu";
 import Icon from "@components/atoms/Icon.vue";
 
 defineProps<{

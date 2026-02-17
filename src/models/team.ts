@@ -1,9 +1,3 @@
-// GK — goleiro
-// DEF — zagueiro
-// LAT — laterais
-// DM — volante
-// MID — meia ofensivo
-// FWD — atacantes
 export type Position = "GK" | "DEF" | "LAT" | "MID" | "DM" | "FWD";
 
 export type TrainingFocus =
@@ -19,6 +13,7 @@ export type TrainingFocus =
 export interface TeamRankingType {
   position: number;
   name: string;
+  logo?: string;
   points: number;
   played: number;
   wins: number;

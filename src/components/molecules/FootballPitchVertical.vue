@@ -1,6 +1,8 @@
 <script setup lang="ts">
-import { Player } from "@/types";
 import { computed } from "vue";
+
+import StadiumLayout from "@components/atoms/StadiumLayout.vue";
+import { Player } from "@/models/team";
 
 const props = defineProps<{ formation: Player[] }>();
 
@@ -14,24 +16,21 @@ const lineup = computed(() => ({
 }));
 
 const formationTatics = computed(() => {
-  // monta a sequência baseada nas linhas defensivas e ofensivas
   const defenders = lineup.value.defenders.length;
   const laterais = lineup.value.laterais.length;
   const volantes = lineup.value.volantes.length;
   const mids = lineup.value.midfielders.length;
   const forwards = lineup.value.forwards.length;
 
-  // Aqui você pode ajustar a ordem que quer mostrar
-  // ex: [defesa total], [meio defensivo], [meio ofensivo], [ataque]
-  const formation = [
-    defenders + laterais, // linha de defesa completa
-    volantes, // volantes (meio defensivo)
-    mids, // meias (meio ofensivo)
-    forwards, // ataque
-  ].filter((n) => n > 0); // remove posições vazias (caso falte alguém)
+  const totalDef = defenders + laterais;
 
-  // retorna no formato 4-2-3-1, por exemplo
-  return formation.join("-");
+  const shouldSeparateVolantes = volantes > 0 && mids > 0 && forwards > 0;
+
+  const formation = shouldSeparateVolantes
+    ? [totalDef, volantes, mids, forwards]
+    : [totalDef, volantes + mids, forwards];
+
+  return formation.filter((n) => n > 0).join("-");
 });
 </script>
 
@@ -50,7 +49,9 @@ const formationTatics = computed(() => {
             :key="player.id"
             class="player"
           >
-            <div class="numero-camisa" :data-tip="player.name">{{ player.shirtNumber }}</div>
+            <div class="numero-camisa" :data-tip="player.name">
+              {{ player.shirtNumber }}
+            </div>
           </div>
         </div>
         <div id="meias">
@@ -59,7 +60,9 @@ const formationTatics = computed(() => {
             :key="player.id"
             class="player"
           >
-            <div class="numero-camisa" :data-tip="player.name">{{ player.shirtNumber }}</div>
+            <div class="numero-camisa" :data-tip="player.name">
+              {{ player.shirtNumber }}
+            </div>
           </div>
         </div>
         <div id="volantes">
@@ -68,14 +71,18 @@ const formationTatics = computed(() => {
             :key="player.id"
             class="player"
           >
-            <div class="numero-camisa" :data-tip="player.name">{{ player.shirtNumber }}</div>
+            <div class="numero-camisa" :data-tip="player.name">
+              {{ player.shirtNumber }}
+            </div>
           </div>
         </div>
         <div id="laterais">
           <template v-for="(player, index) in lineup.laterais" :key="player.id">
             <div v-if="index === 1" class="w-[150px] h-10 rounded"></div>
             <div class="player">
-              <div class="numero-camisa" :data-tip="player.name">{{ player.shirtNumber }}</div>
+              <div class="numero-camisa" :data-tip="player.name">
+                {{ player.shirtNumber }}
+              </div>
             </div>
           </template>
         </div>
@@ -85,7 +92,9 @@ const formationTatics = computed(() => {
             :key="player.id"
             class="player"
           >
-            <div class="numero-camisa" :data-tip="player.name">{{ player.shirtNumber }}</div>
+            <div class="numero-camisa" :data-tip="player.name">
+              {{ player.shirtNumber }}
+            </div>
           </div>
         </div>
         <div id="goleiro" style="margin: auto; display: flex">
@@ -94,78 +103,13 @@ const formationTatics = computed(() => {
             :key="player.id"
             class="player"
           >
-            <div class="numero-camisa" :data-tip="player.name">{{ player.shirtNumber }}</div>
+            <div class="numero-camisa" :data-tip="player.name">
+              {{ player.shirtNumber }}
+            </div>
           </div>
         </div>
       </div>
-      <div id="stadium_layout">
-        <div class="absolute inset-2 border-2 border-white rounded-lg" />
-        <div
-          class="absolute left-2 right-2 top-1/2 -translate-y-1/2 h-[2px] bg-white"
-        />
-
-        <div
-          class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[90px] h-[90px] border-2 border-white rounded-full"
-        />
-        <div
-          class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[5px] h-[5px] bg-white rounded-full"
-        />
-
-        <div
-          class="absolute top-2 left-[20%] w-[60%] h-[75px] border-2 border-white"
-        />
-        <div
-          class="absolute top-2 left-[35%] w-[30%] h-[30px] border-2 border-white"
-        />
-        <div
-          class="absolute top-[55px] left-1/2 -translate-x-1/2 w-[5px] h-[5px] bg-white rounded-full"
-        />
-
-        <div
-          class="absolute top-[82px] left-1/2 -translate-x-1/2 w-[70px] h-[40px] overflow-hidden rotate-180"
-        >
-          <div
-            class="absolute left-0 bottom-0 w-full h-full border-2 border-white rounded-full translate-y-1/2"
-          />
-        </div>
-
-        <div
-          class="absolute bottom-2 left-[20%] w-[60%] h-[75px] border-2 border-white"
-        />
-        <div
-          class="absolute bottom-2 left-[35%] w-[30%] h-[30px] border-2 border-white"
-        />
-        <div
-          class="absolute bottom-[55px] left-1/2 -translate-x-1/2 w-[5px] h-[5px] bg-white rounded-full"
-        />
-
-        <div
-          class="absolute bottom-[82px] left-1/2 -translate-x-1/2 w-[70px] h-[40px] overflow-hidden"
-        >
-          <div
-            class="absolute left-0 bottom-0 w-full h-full border-2 border-white rounded-full translate-y-1/2"
-          />
-        </div>
-
-        <div
-          class="absolute left-2 top-2 w-6 h-6 border-t-2 border-l-2 border-white rounded-tl-full"
-        />
-        <div
-          class="absolute right-2 top-2 w-6 h-6 border-t-2 border-r-2 border-white rounded-tr-full"
-        />
-        <div
-          class="absolute left-2 bottom-2 w-6 h-6 border-b-2 border-l-2 border-white rounded-bl-full"
-        />
-        <div
-          class="absolute right-2 bottom-2 w-6 h-6 border-b-2 border-r-2 border-white rounded-br-full"
-        />
-        <div
-          class="absolute top-0 left-1/2 -translate-x-1/2 w-[90px] h-3 border-t-2 border-white"
-        />
-        <div
-          class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[90px] h-3 border-b-2 border-white"
-        />
-      </div>
+      <StadiumLayout />
     </div>
   </div>
 </template>
