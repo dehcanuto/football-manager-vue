@@ -28,7 +28,7 @@ import Icon from "../atoms/Icon.vue";
           </div>
           <MenuList
             :items="menuOptions"
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow"
           />
         </div>
         <RouterLink to="/" class="btn btn-ghost">
