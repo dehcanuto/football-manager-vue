@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { saudacao } from "@/misc";
+
 import MyTeam from "@components/organisms/MyTeam.vue";
 import NewsSlide from "@components/organisms/NewsSlide.vue";
 import NextGame from "@components/organisms/NextGame.vue";
@@ -10,7 +12,7 @@ import RankingTable from "@components/organisms/RankingTable.vue";
 <template>
   <div class="flex flex-col p-6 gap-4">
     <h2 class="text-bold text-2xl mb-2">
-      Bom dia <span class="text-primary">John Doe</span>, bem vindo de volta.
+      {{ saudacao() }} <span class="text-primary">John Doe</span>, bem vindo de volta.
     </h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 items-center gap-4">
       <MyTeam />
