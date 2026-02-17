@@ -5,6 +5,7 @@ import StadiumIcon from "./icons/Stadium.vue";
 import FinancesIcon from "./icons/Finances.vue";
 import TradeIcon from "./icons/Trade.vue";
 import SoccerIcon from "./icons/Soccer.vue";
+import SubsPlayerIcon from "./icons/SubsPlayer.vue";
 
 const icons = {
   players: PlayersIcon,
@@ -13,6 +14,7 @@ const icons = {
   trade: TradeIcon,
   soccer: SoccerIcon,
   notification: NotificationIcon,
+  substitution: SubsPlayerIcon,
 };
 
 export type IconName = keyof typeof icons;
