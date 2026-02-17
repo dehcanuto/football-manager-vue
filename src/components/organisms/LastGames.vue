@@ -19,7 +19,7 @@ import { lastGames } from "@/data/last_games";
       </div>
       <ul class="py-3 bg-base-100 rounded-lg">
         <li v-for="game in lastGames" class="">
-          <MatchCard small v-bind="game" />
+          <MatchCard size="small" v-bind="game" />
         </li>
       </ul>
     </template>

@@ -1,23 +1,23 @@
-import axios from 'axios'
+import axios from "axios";
 
 const api = axios.create({
   baseURL: import.meta.env.VITE_API_BASE_URL,
   headers: {
-    'Content-Type': 'application/json',
+    "Content-Type": "application/json",
   },
-})
+});
 
 api.interceptors.request.use(
   (config) => {
-    const autorize = localStorage.getItem('@dugout/token')
-    if (autorize) config.headers!.Authorization = `Bearer ${autorize}`
+    const autorize = localStorage.getItem("@dugout/token");
+    if (autorize) config.headers!.Authorization = `Bearer ${autorize}`;
 
-    return config
+    return config;
   },
   (error) => {
-    Promise.reject(error)
-    return error.data.message
-  }
-)
+    Promise.reject(error);
+    return error.data.message;
+  },
+);
 
-export default api
+export default api;

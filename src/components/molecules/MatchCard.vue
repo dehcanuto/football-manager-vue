@@ -8,14 +8,17 @@ interface MatchStatus {
 }
 
 const props = defineProps<{
-  small?: boolean;
   home: MatchStatus;
   away: MatchStatus;
+  size?: "medium" | "small";
 }>();
 </script>
 
 <template>
-  <div class="match-card" :class="{ small: small }">
+  <div
+    class="match-card"
+    :class="{ medium: size === 'medium', small: size === 'small' }"
+  >
     <div class="team team--home">
       <div class="team__name">
         <RouterLink :to="home.link || '#'">{{ home.name }}</RouterLink>
@@ -112,6 +115,44 @@ const props = defineProps<{
     &__separator {
       color: theme("colors.primary");
       font-size: 1.25rem;
+    }
+  }
+
+  /* --- Variante Medium --- */
+  &.medium {
+    gap: 0.75rem;
+    padding: 0.5rem 0;
+
+    .team {
+      gap: 0.75rem;
+
+      &__name {
+        font-size: 1.25rem;
+        font-weight: normal;
+        color: #fff;
+      }
+
+      &__badge {
+        width: 2.5rem;
+        height: 2.5rem;
+        border-width: 2px;
+
+        span {
+          font-size: 1rem;
+        }
+      }
+    }
+
+    .score {
+      gap: 0.75rem;
+
+      span {
+        font-size: 1.75rem;
+      }
+
+      &__separator {
+        font-size: 0.5rem;
+      }
     }
   }
 

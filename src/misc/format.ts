@@ -5,10 +5,10 @@
  * @returns Uma string no formato "R$ 1.234,56".
  */
 export function MoneyFormat(money: string | number): string {
-  return Number(money).toLocaleString('pt-BR', {
-    style: 'currency',
-    currency: 'BRL',
-  })
+  return Number(money).toLocaleString("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+  });
 }
 
 /**
@@ -30,5 +30,5 @@ export function MoneyFormat(money: string | number): string {
  * ```
  */
 export function safeNumber(n: any): number {
-  return Number.isFinite(n) ? n : 0
+  return Number.isFinite(n) ? n : 0;
 }

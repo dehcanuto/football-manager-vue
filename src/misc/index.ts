@@ -8,15 +8,15 @@
  * @returns Uma string com a saudação apropriada: "Bom dia", "Boa tarde" ou "Boa noite".
  */
 export function saudacao(): string {
-  const hora = new Date().getHours()
+  const hora = new Date().getHours();
 
   if (hora >= 5 && hora < 12) {
-    return 'Bom dia'
+    return "Bom dia";
   } else if (hora >= 12 && hora < 18) {
-    return 'Boa tarde'
+    return "Boa tarde";
   } else {
-    return 'Boa noite'
+    return "Boa noite";
   }
 }
 
-export * from './format'
+export * from "./format";

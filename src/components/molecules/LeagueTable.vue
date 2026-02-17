@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { TeamRankingType } from '@/models/team';
-import BaseTable, { ColumnType } from '@components/molecules/BaseTable.vue';
+import { TeamRankingType } from "@/models/team";
+import BaseTable, { ColumnType } from "@components/molecules/BaseTable.vue";
 
 const props = defineProps<{
   season?: number;

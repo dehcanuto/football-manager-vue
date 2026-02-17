@@ -6,6 +6,7 @@ const props = defineProps<{
     | "primary"
     | "default"
     | "black"
+    | "dark"
     | "messageImage"
     | "stadiumImage";
   bgImage?: string;
@@ -16,6 +17,7 @@ const variants = {
   primary: "bg-primary text-primary-content",
   default: "bg-neutral text-neutral-content",
   black: "bg-base-100",
+  dark: "bg-base-300 shadow-md",
   messageImage:
     "bg-center bg-cover text-white bg-[url('@/assets/images/bg-messages.png')]",
   stadiumImage:
