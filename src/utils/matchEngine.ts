@@ -1,5 +1,5 @@
 import { TEXTS } from "@/constants/dialogs";
-import type { Team, Player, EventResult } from "../types";
+import { EventResult, Player, Team } from "@/models/team";
 
 function pick<T>(arr: T[]): T {
   return arr[Math.floor(Math.random() * arr.length)];
@@ -13,7 +13,7 @@ function randomPlayer(team: Team, pos?: string): Player {
 }
 
 function avg(team: Team, key: keyof Player["attributes"]) {
-  const starters = team.players.filter((p) => p.starting);
+  const starters = team.players.filter((p: Player) => p.starting);
   if (!starters.length) return 0;
   return starters.reduce((s, p) => s + p.attributes[key], 0) / starters.length;
 }
@@ -36,7 +36,7 @@ function applyFatigue(team: Team, intensity = 1.0) {
     }
 
     const totalLoss = baseLoss * intensity;
-    p.stamina = Math.max(0, p.stamina - totalLoss);
+    p.status.stamina = Math.max(0, p.status.stamina - totalLoss);
   });
 }
 
@@ -126,7 +126,7 @@ function doAttack(
     );
   }
 
-  const staminaFactor = (striker.stamina / 100) * 0.9 + 0.1;
+  const staminaFactor = (striker.status.stamina / 100) * 0.9 + 0.1;
   const attackPower =
     (striker.attributes.shooting * 0.55 +
       striker.attributes.dribbling * 0.25 +
@@ -134,7 +134,7 @@ function doAttack(
       staminaFactor +
     Math.random() * 15;
 
-  const keeperFactor = (keeper.stamina / 100) * 0.9 + 0.1;
+  const keeperFactor = (keeper.status.stamina / 100) * 0.9 + 0.1;
   const defensePower =
     (keeper.attributes.defense * 0.6 +
       keeper.attributes.physical * 0.25 +
@@ -238,12 +238,12 @@ function doCorner(minute: number, home: Team, away: Team): EventResult {
 
   const aerialPower =
     (tall.attributes.height * 0.6 + tall.attributes.physical * 0.4) *
-      (tall.stamina / 100) +
+      (tall.status.stamina / 100) +
     Math.random() * 10;
 
   const defensePower =
     (goalie.attributes.defense * 0.7 + goalie.attributes.height * 0.3) *
-      (goalie.stamina / 100) +
+      (goalie.status.stamina / 100) +
     Math.random() * 10;
 
   if (aerialPower > defensePower + 15)

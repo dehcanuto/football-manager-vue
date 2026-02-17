@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import type { Team } from "@/types";
+import { Team } from "@/models/team";
 import Stamina from "@components/atoms/Stamina.vue";
 
 const props = defineProps<{ team: Team }>();
 </script>
 
 <template>
-  <div class="bg-white rounded shadow p-3">
+  <div class="bg-base-200 rounded shadow p-3">
     <div class="mb-4">
       <h3 class="text-2xl font-semibold">{{ team.name }}</h3>
       <span>{{ team.formation }}</span>
@@ -19,7 +19,7 @@ const props = defineProps<{ team: Team }>();
         class="flex items-center justify-between"
       >
         <div class="flex items-center gap-3">
-          <div class="w-60">
+          <div class="w-56">
             <div
               class="font-medium text-sm"
               :class="{ 'opacity-60': !p.starting }"
@@ -45,7 +45,7 @@ const props = defineProps<{ team: Team }>();
           </div>
         </div>
 
-        <Stamina :value="p.stamina" />
+        <Stamina :value="p.status.stamina" />
       </div>
     </div>
   </div>
