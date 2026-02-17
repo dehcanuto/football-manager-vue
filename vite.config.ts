@@ -5,6 +5,11 @@ import { fileURLToPath, URL } from "node:url";
 
 export default defineConfig({
   plugins: [vue()],
+  test: {
+    globals: true,
+    environment: "jsdom",
+    setupFiles: "./tests/setup.ts",
+  },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
