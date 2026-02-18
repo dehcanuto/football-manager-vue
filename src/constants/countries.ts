@@ -48,16 +48,16 @@ const COUNTRIES_ICONS = {
 };
 
 export const COUNTRIES: Record<CountryCode, CountryProps> = {
-  BR: { name: "Brazil", flag: COUNTRIES_ICONS.BR },
+  BR: { name: "Brasil", flag: COUNTRIES_ICONS.BR },
   AR: { name: "Argentina", flag: COUNTRIES_ICONS.AR },
-  EN: { name: "England", flag: COUNTRIES_ICONS.EN },
+  EN: { name: "Inglaterra", flag: COUNTRIES_ICONS.EN },
   GB: { name: "United Kingdom", flag: COUNTRIES_ICONS.UK },
-  ES: { name: "Spain", flag: COUNTRIES_ICONS.ES },
-  FR: { name: "France", flag: COUNTRIES_ICONS.FR },
-  DE: { name: "Germany", flag: COUNTRIES_ICONS.DE },
-  IT: { name: "Italy", flag: COUNTRIES_ICONS.IT },
+  ES: { name: "Espanha", flag: COUNTRIES_ICONS.ES },
+  FR: { name: "França", flag: COUNTRIES_ICONS.FR },
+  DE: { name: "Alemanha", flag: COUNTRIES_ICONS.DE },
+  IT: { name: "Itália", flag: COUNTRIES_ICONS.IT },
   PT: { name: "Portugal", flag: COUNTRIES_ICONS.PT },
   NL: { name: "Netherlands", flag: COUNTRIES_ICONS.NL },
-  UR: { name: "Uruguay", flag: COUNTRIES_ICONS.UR },
+  UR: { name: "Uruguai", flag: COUNTRIES_ICONS.UR },
   US: { name: "USA", flag: COUNTRIES_ICONS.US },
 };

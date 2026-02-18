@@ -71,6 +71,8 @@ export interface Player {
   yellowCards?: number;
   averageRating?: number;
   trainingFocus: string;
+  team?: string;
+  overall?: number;
 }
 
 export interface Team {

@@ -16,6 +16,7 @@ import {
   Legend,
 } from "chart.js";
 import { Player } from "@/models/team";
+import { PLAYER_ATTRIBUTES } from "@/constants/training";
 
 ChartJS.register(
   RadialLinearScale,
@@ -101,27 +102,40 @@ const radarOptions = {
           <CountryFlag :code="player.nationality" show-name />
           <span>{{ player.age }} anos</span>
         </div>
-        <div>
-          <div class="flex items-center justify-between">
-            <div class="text-gray-400">Saúde</div>
-            <span>{{ player.status.stamina }}%</span>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <div class="flex items-center justify-between">
+              <div class="text-gray-400">Saúde</div>
+              <span>{{ player.status.stamina }}%</span>
+            </div>
+            <progress
+              class="progress progress-success w-full"
+              :value="player.status.stamina"
+              max="100"
+            ></progress>
           </div>
-          <progress
-            class="progress progress-success w-full"
-            :value="player.status.stamina"
-            max="100"
-          ></progress>
+
+          <div>
+            <div class="flex items-center justify-between">
+              <div class="text-gray-400">Moral</div>
+              <span>{{ player.status.morale }}%</span>
+            </div>
+            <progress
+              class="progress progress-warning w-full"
+              :value="player.status.morale"
+              max="100"
+            ></progress>
+          </div>
         </div>
-        <div>
-          <div class="flex items-center justify-between">
-            <div class="text-gray-400">Moral</div>
-            <span>{{ player.status.morale }}%</span>
+        <div class="flex flex-row card bg-base-200">
+          <div class="stat">
+            <div class="stat-title text-gray-400">Time</div>
+            <div class="stat-value text-white">Náutico Capibaribe</div>
           </div>
-          <progress
-            class="progress progress-warning w-full"
-            :value="player.status.morale"
-            max="100"
-          ></progress>
+          <div class="stat">
+            <div class="stat-title text-gray-400">Gols</div>
+            <div class="stat-value text-white">12</div>
+          </div>
         </div>
       </div>
       <div>
@@ -181,8 +195,13 @@ const radarOptions = {
             :key="key"
             class="flex items-center justify-between gap-3"
           >
-            <div class="capitalize text-gray-400">{{ key }}</div>
-            <div class="flex-1 h-3 bg-gray-700 rounded-full mx-2">
+            <div class="capitalize text-gray-400 w-20">
+              {{ PLAYER_ATTRIBUTES[key].title }}
+            </div>
+            <div
+              class="flex-1 h-3 bg-gray-700 tooltip tooltip-bottom rounded-full mx-2"
+              :data-tip="PLAYER_ATTRIBUTES[key].description"
+            >
               <div
                 class="h-full bg-primary rounded-full transition-all duration-500"
                 :style="{ width: val + '%' }"

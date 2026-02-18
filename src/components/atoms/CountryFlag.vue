@@ -25,7 +25,7 @@ const flagStyle = computed(() => `size-${props.size ?? 5}`);
       :class="flagStyle"
       class="rounded-sm"
     />
-    <span v-if="defaultShow" class="text-xs text-gray-200">
+    <span v-if="defaultShow">
       {{ country.name }}
     </span>
   </div>

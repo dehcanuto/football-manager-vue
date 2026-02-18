@@ -3,6 +3,7 @@ import { ref, watch, onMounted } from "vue";
 
 import BaseTitle from "@/components/molecules/BaseTitle.vue";
 
+// TODO: provisório até a integração.
 interface Player {
   id: number;
   name: string;
