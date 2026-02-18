@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { reactive, computed } from "vue";
 
+import BaseTitle from "@/components/molecules/BaseTitle.vue";
+
 interface SubRule {
   id: number;
   condition: "winning" | "losing" | "draw" | "time" | "stamina";
@@ -52,13 +54,10 @@ const mentalityColors = computed(() => ({
 
 <template>
   <div class="p-6 space-y-8">
-    <!-- Header -->
-    <div>
-      <h2 class="text-2xl font-bold text-white">Táticas do Time</h2>
-      <p class="text-gray-400 text-sm">
-        Defina a filosofia de jogo e os planos de substituição automáticos.
-      </p>
-    </div>
+    <BaseTitle
+      title="Táticas do Time"
+      subtitle="Defina a filosofia de jogo e os planos de substituição automáticos."
+    />
 
     <!-- Game Plan -->
     <div class="card bg-base-200 p-6 space-y-4">

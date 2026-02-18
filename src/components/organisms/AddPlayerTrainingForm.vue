@@ -59,14 +59,24 @@ const {
             <div class="label">
               <span class="label-text">Fadiga</span>
             </div>
-            <Stamina class="my-auto" :value="selectedPlayer.status.stamina" full right />
+            <Stamina
+              class="my-auto"
+              :value="selectedPlayer.status.stamina"
+              full
+              right
+            />
           </label>
 
           <label class="form-control w-full max-w-xs">
             <div class="label">
               <span class="label-text">Moral</span>
             </div>
-            <Stamina class="my-auto" :value="selectedPlayer.status.morale" full right />
+            <Stamina
+              class="my-auto"
+              :value="selectedPlayer.status.morale"
+              full
+              right
+            />
           </label>
         </template>
 
@@ -80,21 +90,21 @@ const {
       </div>
 
       <div v-if="selectedPlayer" class="mt-4 space-y-2 pt-3">
-          <div class="flex flex-wrap items-center gap-4 text-sm text-gray-400">
-            <div>
-              <strong>Foco sugerido:</strong>
-              <span
-                v-for="focus in positionTrainingSuggestions[
-                  selectedPlayer.position
-                ]"
-                :key="focus"
-                class="badge badge-outline mx-1"
-              >
-                {{ focus }}
-              </span>
-            </div>
+        <div class="flex flex-wrap items-center gap-4 text-sm text-gray-400">
+          <div>
+            <strong>Foco sugerido:</strong>
+            <span
+              v-for="focus in positionTrainingSuggestions[
+                selectedPlayer.position
+              ]"
+              :key="focus"
+              class="badge badge-outline mx-1"
+            >
+              {{ focus }}
+            </span>
           </div>
         </div>
+      </div>
     </div>
   </div>
 </template>

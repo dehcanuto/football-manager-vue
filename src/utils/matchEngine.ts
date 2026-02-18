@@ -4,7 +4,7 @@ import { TEXTS } from "@/constants/dialogs";
 import { EventResult, Player, Team } from "@/models/team";
 
 export function goalConfetti() {
-  console.log('clicou!')
+  console.log("clicou!");
   const end = Date.now() + 1 * 1000;
 
   const colors = ["#bb0000", "#ffffff"];

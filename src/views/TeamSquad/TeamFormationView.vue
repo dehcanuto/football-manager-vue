@@ -2,6 +2,7 @@
 import { ref } from "vue";
 import { useTeam } from "@/composables/team";
 
+import BaseTitle from "@/components/molecules/BaseTitle.vue";
 import BaseCard from "@components/molecules/BaseCard.vue";
 import PlayerList from "@components/molecules/PlayerList.vue";
 import FootballPitchVertical from "@components/molecules/FootballPitchVertical.vue";
@@ -24,6 +25,10 @@ const {
 
 <template>
   <div class="flex flex-col p-6 gap-4">
+    <BaseTitle
+      title="Formação do Time"
+      subtitle="Monte sua escalação ideal e defina quem entra em campo desde o início."
+    />
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
       <BaseCard>
         <template #title>Elenco</template>

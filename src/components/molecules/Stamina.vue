@@ -9,14 +9,8 @@ const props = defineProps<{
 </script>
 
 <template>
-  <div
-    class="flex items-center gap-3"
-    :class="right ? 'flex-row-reverse' : ''"
-  >
-    <div
-      class="w-10 text-sm"
-      :class="right ? 'text-left' : 'text-right'"
-    >
+  <div class="flex items-center gap-3" :class="right ? 'flex-row-reverse' : ''">
+    <div class="w-10 text-sm" :class="right ? 'text-left' : 'text-right'">
       {{ Math.round(value).toFixed(0) }}%
     </div>
 

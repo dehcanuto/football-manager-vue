@@ -28,7 +28,9 @@ export const useTraining = createSharedComposable(() => {
     if (!selectedPlayer.value) return;
 
     const player = selectedPlayer.value;
-    const suggestions = positionTrainingSuggestions[player.position] ?? ["Geral"];
+    const suggestions = positionTrainingSuggestions[player.position] ?? [
+      "Geral",
+    ];
     const focus = trainingFocus.value || (suggestions[0] as TrainingFocus);
 
     players.value.push({

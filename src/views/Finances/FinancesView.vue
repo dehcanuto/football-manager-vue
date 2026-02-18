@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import BaseTitle from "@/components/molecules/BaseTitle.vue";
+
 const finances = {
   balance: 8450000,
   monthlyProfit: 350000,
@@ -30,6 +32,11 @@ const formatMoney = (value: number) => "R$ " + value.toLocaleString("pt-BR");
 
 <template>
   <div class="p-6 flex flex-col gap-6">
+    <BaseTitle
+      title="Finanças"
+      subtitle="Acompanhe receitas, despesas e o equilíbrio financeiro do seu clube."
+    />
+
     <div class="grid grid-cols-1 sm:grid-cols-4 gap-4">
       <div class="card bg-base-200 shadow">
         <div class="card-body p-4 text-center">

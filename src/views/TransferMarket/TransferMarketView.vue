@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { ref, watch, onMounted } from "vue";
 
+import BaseTitle from "@/components/molecules/BaseTitle.vue";
+
 interface Player {
   id: number;
   name: string;
@@ -110,7 +112,11 @@ onMounted(fetchPlayers);
 
 <template>
   <div class="p-6 flex flex-col gap-6">
-    <!-- 💰 Orçamento -->
+    <BaseTitle
+      title="Mercado"
+      subtitle="Negocie jogadores, contrate reforços e fortaleça seu elenco."
+    />
+
     <div class="flex flex-col sm:flex-row justify-between gap-4">
       <div class="card bg-base-200 shadow-md flex-1">
         <div class="card-body py-3 px-4">
@@ -131,10 +137,8 @@ onMounted(fetchPlayers);
       </div>
     </div>
 
-    <!-- 🎛️ FILTROS -->
     <div class="card bg-base-200 shadow-md">
       <div class="card-body p-4 grid grid-cols-1 sm:grid-cols-4 gap-4">
-        <!-- Busca -->
         <div>
           <label class="label text-sm text-gray-400">Buscar jogador</label>
           <input
@@ -145,7 +149,6 @@ onMounted(fetchPlayers);
           />
         </div>
 
-        <!-- Posição -->
         <div>
           <label class="label text-sm text-gray-400">Posição</label>
           <select
@@ -160,9 +163,8 @@ onMounted(fetchPlayers);
           </select>
         </div>
 
-        <!-- Valor máximo -->
         <div>
-          <label class="label text-sm text-gray-400">
+          <label class="label text-sm text-gray-400 mb-3">
             Valor máximo: {{ formatMoney(filters.maxValue) }}
           </label>
           <input
@@ -175,9 +177,8 @@ onMounted(fetchPlayers);
           />
         </div>
 
-        <!-- Overall mínimo -->
         <div>
-          <label class="label text-sm text-gray-400">
+          <label class="label text-sm text-gray-400 mb-3">
             Overall mínimo: {{ filters.minOverall }}
           </label>
           <input
@@ -192,7 +193,6 @@ onMounted(fetchPlayers);
       </div>
     </div>
 
-    <!-- 🧾 Lista -->
     <div v-if="loading" class="text-center py-10 text-gray-400">
       Carregando...
     </div>

@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import { useTraining } from "@/composables/training";
 
-import {
-  trainingTypes,
-} from "@/constants/training";
+import { trainingTypes } from "@/constants/training";
 
+import BaseTitle from "@/components/molecules/BaseTitle.vue";
 import Stamina from "@/components/molecules/Stamina.vue";
 import PositionTag from "@components/atoms/PositionTag.vue";
 import AddPlayerTrainingForm from "@components/organisms/AddPlayerTrainingForm.vue";
@@ -15,11 +14,10 @@ const { players, changeFocus } = useTraining();
 <template>
   <div class="p-6 flex flex-col gap-6">
     <!-- Header -->
-    <div
-      class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4"
-    >
-      <h2 class="text-2xl font-bold text-gray-200">Centro de Treinamento</h2>
-    </div>
+    <BaseTitle
+      title="Centro de Treinamento"
+      subtitle="Gerencie os treinos individuais e desenvolva as habilidades dos seus jogadores."
+    />
 
     <AddPlayerTrainingForm />
 
