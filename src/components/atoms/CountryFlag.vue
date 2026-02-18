@@ -11,7 +11,9 @@ const props = defineProps<{
 const defaultShow = props.showName ?? true;
 
 const countryCode = computed(() => props.code.toUpperCase());
-const country = computed<CountryProps>(() => COUNTRIES[countryCode.value as keyof typeof COUNTRIES]);
+const country = computed<CountryProps>(
+  () => COUNTRIES[countryCode.value as keyof typeof COUNTRIES],
+);
 const flagStyle = computed(() => `size-${props.size ?? 5}`);
 </script>
 

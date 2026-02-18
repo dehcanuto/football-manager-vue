@@ -19,14 +19,3 @@ export const groups: Record<Position, Position[]> = {
   MID: ["DM", "MID"],
   FWD: ["FWD"],
 };
-
-export const trainingTypes = [
-  "Finalização",
-  "Passe",
-  "Velocidade",
-  "Força",
-  "Tática",
-  "Marcação",
-  "Posicionamento",
-  "Reflexos",
-];

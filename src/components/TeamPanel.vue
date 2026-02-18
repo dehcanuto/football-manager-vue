@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Team } from "@/models/team";
-import Stamina from "@components/atoms/Stamina.vue";
+import Stamina from "@components/molecules/Stamina.vue";
 
 const props = defineProps<{ team: Team }>();
 </script>

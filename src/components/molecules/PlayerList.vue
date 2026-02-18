@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Player } from "@/models/team";
 import Icon from "@components/atoms/Icon.vue";
-import Stamina from "@components/atoms/Stamina.vue";
+import Stamina from "@components/molecules/Stamina.vue";
 
 const props = defineProps<Player & { disabled?: boolean }>();
 const emit = defineEmits(["substitute"]);

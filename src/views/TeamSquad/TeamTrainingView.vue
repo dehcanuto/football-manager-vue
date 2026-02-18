@@ -1,56 +1,29 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { useTraining } from "@/composables/training";
 
+import {
+  trainingTypes,
+} from "@/constants/training";
+
+import Stamina from "@/components/molecules/Stamina.vue";
 import PositionTag from "@components/atoms/PositionTag.vue";
-import { PlayerTrainning, TrainingFocus } from "@/models/team";
-import { trainingTypes } from "@/constants/team";
-import { player_trainning } from "@/data/player_trainning";
+import AddPlayerTrainingForm from "@components/organisms/AddPlayerTrainingForm.vue";
 
-const players = ref<PlayerTrainning[]>(player_trainning);
-
-function changeFocus(player: PlayerTrainning, newFocus: TrainingFocus) {
-  player.trainingFocus = newFocus;
-}
+const { players, changeFocus } = useTraining();
 </script>
 
 <template>
   <div class="p-6 flex flex-col gap-6">
+    <!-- Header -->
     <div
       class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4"
     >
       <h2 class="text-2xl font-bold text-gray-200">Centro de Treinamento</h2>
     </div>
 
-    <div class="card bg-base-200 shadow-md">
-      <div class="card-body grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div>
-          <h3 class="text-gray-400 text-sm">Treinos ativos</h3>
-          <p class="text-2xl font-bold text-primary">{{ players.length }}</p>
-        </div>
-        <div>
-          <h3 class="text-gray-400 text-sm">Média de Moral</h3>
-          <p class="text-2xl font-bold text-success">
-            {{
-              Math.round(
-                players.reduce((acc, p) => acc + p.morale, 0) / players.length,
-              )
-            }}%
-          </p>
-        </div>
-        <div>
-          <h3 class="text-gray-400 text-sm">Média de Fadiga</h3>
-          <p class="text-2xl font-bold text-warning">
-            {{
-              Math.round(
-                players.reduce((acc, p) => acc + (100 - p.stamina), 0) /
-                  players.length,
-              )
-            }}%
-          </p>
-        </div>
-      </div>
-    </div>
+    <AddPlayerTrainingForm />
 
+    <!-- Lista de jogadores treinando -->
     <div class="card bg-base-200 shadow-lg">
       <div class="card-body">
         <div class="overflow-x-auto">
@@ -75,9 +48,7 @@ function changeFocus(player: PlayerTrainning, newFocus: TrainingFocus) {
                 <td class="text-center font-semibold text-primary">
                   {{ p.id }}
                 </td>
-
                 <td class="font-semibold text-gray-100">{{ p.name }}</td>
-
                 <td class="text-center">
                   <PositionTag :position="p.position" />
                 </td>
@@ -98,28 +69,12 @@ function changeFocus(player: PlayerTrainning, newFocus: TrainingFocus) {
                   </select>
                 </td>
 
-                <!-- Fadiga -->
                 <td class="text-center">
-                  <progress
-                    class="progress progress-warning w-24"
-                    :value="100 - p.stamina"
-                    max="100"
-                  ></progress>
-                  <span class="text-xs text-gray-400 ml-2"
-                    >{{ 100 - p.stamina }}%</span
-                  >
+                  <Stamina :value="p.stamina" right />
                 </td>
 
-                <!-- Moral -->
                 <td class="text-center">
-                  <progress
-                    class="progress progress-success w-24"
-                    :value="p.morale"
-                    max="100"
-                  ></progress>
-                  <span class="text-xs text-gray-400 ml-2"
-                    >{{ p.morale }}%</span
-                  >
+                  <Stamina :value="p.morale" right />
                 </td>
               </tr>
             </tbody>
