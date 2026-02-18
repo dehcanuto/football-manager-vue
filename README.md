@@ -1,9 +1,13 @@
-# ⚽ Footbal Manager — Clássico Recife Edition
+# ⚽ The Dugout - Footbal Manager
 
 ![Version](https://img.shields.io/badge/1.0.0-beta?label=version)
 ![Vue 3](https://img.shields.io/badge/Vue%203-3.5.13-41B883.svg?style=flat-square&logo=vue.js)
 ![Vite](https://img.shields.io/badge/Vite-7.0.0-646CFF.svg?style=flat-square&logo=vite)
+![Vitest](https://img.shields.io/badge/Vitest-3.2.4-729B1B.svg?style=flat-square&logo=vitest)
+![Pinia](https://img.shields.io/badge/Pinia-3.0.3-F5C518.svg?style=flat-square&logo=vue.js)
 ![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-3.0-38B2AC.svg?style=flat-square&logo=tailwindcss)
+![DaisyUI](https://img.shields.io/badge/DaisyUI-4.12.24-FE7C1D.svg?style=flat-square&logo=daisyui)
+
 
 Simulador tático e narrativo inspirado em **Brasfoot**, criado com **Vue 3 + TypeScript + Vite**.  
 Você comanda **Náutico** e **Sport** em partidas simuladas minuto a minuto, com:
@@ -26,8 +30,8 @@ Você comanda **Náutico** e **Sport** em partidas simuladas minuto a minuto, co
 | ⚙️ **Vite**                    | Build rápido e leve                                     |
 | 🧩 **Vue 3 (Composition API)** | Framework principal                                     |
 | 💬 **TypeScript**              | Tipagem forte e previsível                              |
-| 🎨 **TailwindCSS**             | Estilização moderna e responsiva                        |
-| ⚡ **Sim Engine custom**       | Cálculo probabilístico com atributos reais de jogadores |
+| 🎨 **TailwindCSS + DaisyUI**   | Estilização moderna e responsiva                        |
+| ⚡ **Sim Engine custom**        | Cálculo probabilístico com atributos reais de jogadores |
 
 ---
 
@@ -46,9 +50,9 @@ avaliando atributos individuais dos jogadores e o contexto do jogo para criar ev
 
 A cada minuto:
 
-- Jogadores **perdem stamina** proporcional à posição (atacantes cansam mais);
+- Jogadores **perdem stamina** proporcional à posição;
 - O desempenho **cai conforme o cansaço**;
-- Substituições e táticas podem ser feitas no **pré-jogo** ou **intervalo**.
+- Substituições e táticas podem ser feitas no módulo **táticas** antes do jogo.
 
 ---
 
@@ -56,14 +60,14 @@ A cada minuto:
 
 ```bash
 # 1. Clone o repositório
-git clone https://github.com/seu-usuario/mini-brasfoot.git
-cd mini-brasfoot
+git clone git@github.com:dehcanuto/football-manager-vue.git
+cd football-manager-vue
 
 # 2. Instale as dependências
-npm install
+yarn install
 
 # 3. Rode em modo desenvolvimento
-npm run dev
+yarn dev
 ```
 
 Acesse em: [http://localhost:5173](http://localhost:5173)
@@ -89,24 +93,10 @@ src/
 
 ## 🧩 Gameplay
 
-### ▶️ Pré-jogo
-
-- Selecione formação e titulares.
-- Visualize atributos e stamina iniciais.
-- Clique em “Iniciar partida”.
-
 ### 🕒 Durante o jogo
 
 - Acompanhe o log minuto a minuto.
 - Veja as barras de stamina descendo.
-- No intervalo (45’), abra a modal para:
-  - Fazer substituições
-  - Mudar formação (ex: de 4-3-3 para 4-4-2)
-
-### 🏁 Fim de jogo
-
-- Resultado exibido automaticamente após os 90’.
-- O botão “Recomeçar” reinicia a partida.
 
 ## 🧩 Atributos dos jogadores
 
