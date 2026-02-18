@@ -33,7 +33,15 @@ export interface Attributes {
   heading: number;
   defense: number;
   physical: number;
-  height: number;
+  gkDefense: number;
+  fairPlay: number;
+  marking: number;
+  interception: number;
+  crossing: number;
+  longPass: number;
+  setPieces: number;
+  ballControl: number;
+  positioning: number;
 }
 
 export interface PlayerFinances {
@@ -64,6 +72,7 @@ export interface Player {
   age: number;
   status: PlayerStatus;
   position: Position;
+  height: number;
   attributes: Attributes;
   finances: PlayerFinances;
   starting?: boolean;
@@ -78,7 +87,7 @@ export interface Player {
 export interface Team {
   name: string;
   color: string;
-  formation: "4-3-3" | "4-4-2" | "3-5-2";
+  formation: string;
   players: Player[];
 }
 

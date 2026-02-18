@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed } from "vue";
+import { useRoute } from "vue-router";
 import { Radar } from "vue-chartjs";
 
 import RatingStars from "@components/molecules/RatingStars.vue";
@@ -15,8 +16,10 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
-import { Player } from "@/models/team";
+
+import { Attributes, Player } from "@/models/team";
 import { PLAYER_ATTRIBUTES } from "@/constants/training";
+import { Nautico } from "@/data/teams";
 
 ChartJS.register(
   RadialLinearScale,
@@ -27,49 +30,52 @@ ChartJS.register(
   Legend,
 );
 
-const player: Player = {
-  id: 1,
-  shirtNumber: 29,
-  name: "Aaron Wan-Bissaka",
-  position: "FWD",
-  nationality: "BR",
-  age: 23,
-  finances: {
-    contractTime: 3,
-    salary: 120000,
-    value: 32000000,
-  },
-  status: {
-    stamina: 92,
-    morale: 80,
-  },
-  attributes: {
-    pace: 86,
-    shooting: 51,
-    passing: 68,
-    dribbling: 78,
-    defense: 80,
-    physical: 74,
-    heading: 20,
-    height: 20,
-  },
-  averageRating: 3.4,
-  trainingFocus: "",
-};
+const route = useRoute();
+const playerId = computed(() => Number(route.params.id));
+const player = computed<Player | null>(() => {
+  return Nautico.players.find((p) => p.id === playerId.value) ?? null;
+});
 
-const radarData = computed(() => ({
-  labels: ["Pace", "Shooting", "Passing", "Dribbling", "Defending", "Physical"],
-  datasets: [
-    {
-      label: player.name,
-      data: Object.values(player.attributes),
-      backgroundColor: "rgba(59, 130, 246, 0.2)",
-      borderColor: "#3B82F6",
-      pointBackgroundColor: "#3B82F6",
-      borderWidth: 2,
-    },
-  ],
-}));
+const playerHeight = computed(() => {
+  const p = player.value;
+  return p ? `${(p.height / 100).toFixed(2)}m` : undefined;
+});
+
+const radarData = computed(() => {
+  if (!player.value) {
+    return {
+      labels: [],
+      datasets: [],
+    };
+  }
+
+  const coreStats: (keyof Attributes)[] = [
+    "pace",
+    "shooting",
+    "passing",
+    "dribbling",
+    "defense",
+    "physical",
+  ];
+
+  const dataValues = coreStats.map((attr) => player.value!.attributes[attr] ?? 0);
+
+  return {
+    labels: ["Velocidade", "Chute", "Passe", "Drible", "Defesa", "Físico"],
+    datasets: [
+      {
+        label: player.value.name,
+        data: dataValues,
+        backgroundColor: "rgba(59, 130, 246, 0.2)",
+        borderColor: "#3B82F6",
+        borderWidth: 2,
+        pointBackgroundColor: "#3B82F6",
+        pointHoverBackgroundColor: "#60A5FA",
+        fill: true,
+      },
+    ],
+  };
+});
 
 const radarOptions = {
   scales: {
@@ -90,18 +96,20 @@ const radarOptions = {
 </script>
 
 <template>
-  <div class="p-6">
+  <div class="p-6" v-if="player">
     <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-8 mb-8">
       <div class="flex flex-col text-center sm:text-left gap-3">
         <h2 class="text-3xl font-bold text-white">
-          <span class="text-primary text-lg">12</span>
+          <span class="text-primary text-lg">{{ player.shirtNumber }}</span>
           {{ player.name }}
         </h2>
+
         <div class="flex items-center gap-4">
           <PositionTag :position="player.position" />
           <CountryFlag :code="player.nationality" show-name />
           <span>{{ player.age }} anos</span>
         </div>
+
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <div class="flex items-center justify-between">
@@ -114,7 +122,6 @@ const radarOptions = {
               max="100"
             ></progress>
           </div>
-
           <div>
             <div class="flex items-center justify-between">
               <div class="text-gray-400">Moral</div>
@@ -136,6 +143,10 @@ const radarOptions = {
             <div class="stat-title text-gray-400">Gols</div>
             <div class="stat-value text-white">12</div>
           </div>
+          <div class="stat">
+            <div class="stat-title text-gray-400">Altura</div>
+            <div class="stat-value text-white">{{ playerHeight }}</div>
+          </div>
         </div>
       </div>
       <div>
@@ -144,7 +155,8 @@ const radarOptions = {
             <div class="stat">
               <div class="stat-title text-gray-400">Salário</div>
               <div class="stat-value text-primary">
-                R$ {{ player.finances.salary.toLocaleString("pt-BR") }}/sem
+                R$
+                {{ player.finances.salary.toLocaleString("pt-BR") }}/sem
               </div>
             </div>
             <div class="stat">
@@ -195,12 +207,12 @@ const radarOptions = {
             :key="key"
             class="flex items-center justify-between gap-3"
           >
-            <div class="capitalize text-gray-400 w-20">
-              {{ PLAYER_ATTRIBUTES[key].title }}
+            <div class="capitalize text-gray-400 w-32">
+              {{ PLAYER_ATTRIBUTES[key]?.title || key }}
             </div>
             <div
               class="flex-1 h-3 bg-gray-700 tooltip tooltip-bottom rounded-full mx-2"
-              :data-tip="PLAYER_ATTRIBUTES[key].description"
+              :data-tip="PLAYER_ATTRIBUTES[key]?.description || 'Sem descrição'"
             >
               <div
                 class="h-full bg-primary rounded-full transition-all duration-500"
@@ -212,6 +224,9 @@ const radarOptions = {
         </div>
       </div>
     </div>
+  </div>
+  <div v-else class="p-8 text-center text-gray-400">
+    Jogador não encontrado.
   </div>
 </template>
 
