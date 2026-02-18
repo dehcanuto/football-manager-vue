@@ -1,5 +1,35 @@
+import confetti from "canvas-confetti";
+
 import { TEXTS } from "@/constants/dialogs";
 import { EventResult, Player, Team } from "@/models/team";
+
+export function goalConfetti() {
+  console.log('clicou!')
+  const end = Date.now() + 1 * 1000;
+
+  const colors = ["#bb0000", "#ffffff"];
+
+  (function frame() {
+    confetti({
+      particleCount: 2,
+      angle: 60,
+      spread: 55,
+      origin: { x: 0 },
+      colors: colors,
+    });
+    confetti({
+      particleCount: 2,
+      angle: 120,
+      spread: 55,
+      origin: { x: 1 },
+      colors: colors,
+    });
+
+    if (Date.now() < end) {
+      requestAnimationFrame(frame);
+    }
+  })();
+}
 
 function pick<T>(arr: T[]): T {
   return arr[Math.floor(Math.random() * arr.length)];
@@ -144,6 +174,7 @@ function doAttack(
 
   // Gol normal
   if (attackPower > defensePower + 18) {
+    goalConfetti();
     return {
       minute,
       text: TEXTS.MATCH.GOAL(striker.name, attacking.name),
@@ -246,7 +277,8 @@ function doCorner(minute: number, home: Team, away: Team): EventResult {
       (goalie.status.stamina / 100) +
     Math.random() * 10;
 
-  if (aerialPower > defensePower + 15)
+  if (aerialPower > defensePower + 15) {
+    goalConfetti();
     return {
       minute,
       text: TEXTS.MATCH.GOAL_OPEN(
@@ -258,6 +290,7 @@ function doCorner(minute: number, home: Team, away: Team): EventResult {
       playerName: tall.name,
       kind: "goal",
     };
+  }
 
   if (aerialPower > defensePower)
     return {
