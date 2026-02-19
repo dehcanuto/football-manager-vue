@@ -1,0 +1,53 @@
+name: Deploy Frontend to VPS
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Configurar SSH
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.VPS_SSH_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          eval "$(ssh-agent -s)"
+          ssh-add ~/.ssh/id_rsa
+          ssh-keyscan -H ${{ secrets.VPS_IP }} >> ~/.ssh/known_hosts
+
+      # Build do frontend com Yarn
+      - name: Build frontend
+        run: |
+          corepack enable
+          corepack prepare yarn@4.9.1 --activate
+          yarn install
+          yarn build
+
+      # Criar pasta na VPS
+      - name: Prepare VPS folder
+        run: |
+          ssh root@${{ secrets.VPS_IP }} "mkdir -p /var/www/frontend && chown -R root:root /var/www/frontend"
+
+      # Copiar arquivos para VPS
+      - name: Copy frontend to VPS
+        run: |
+          scp -r ./package*.json ./dist root@${{ secrets.VPS_IP }}:/var/www/frontend/
+
+      # Instalar dependências e reiniciar com PM2
+      - name: Install & Restart frontend
+        run: |
+          ssh root@${{ secrets.VPS_IP }} "
+            corepack enable
+            corepack prepare yarn@4.9.1 --activate
+            cd /var/www/frontend &&
+            yarn install --production &&
+            pm2 restart frontend || pm2 start dist/main.js --name frontend
+          "
