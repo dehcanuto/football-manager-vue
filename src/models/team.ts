@@ -87,6 +87,19 @@ export interface Team {
   players: Player[];
 }
 
+export interface TeamInfos {
+  name: string;
+  abbreviation: string;
+  stadium: string;
+  supporters: number;
+  balance: number;
+  morale: number;
+  colors: {
+    primary: string;
+    secondary: string;
+  }
+}
+
 export interface EventResult {
   minute: number;
   text: string;

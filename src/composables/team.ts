@@ -2,11 +2,12 @@ import { ref, computed } from "vue";
 import { createSharedComposable } from "@vueuse/core";
 
 import { Nautico } from "@/data/teams";
-import { Player } from "@/models/team";
+import { Player, TeamInfos } from "@/models/team";
 import { groups, positionOrder } from "@/constants/team";
 import { crudService } from "@/services/crud";
 
 export const useTeam = createSharedComposable(() => {
+  const myTeam = ref<TeamInfos>();
   const players = ref<Player[]>(JSON.parse(JSON.stringify(Nautico.players)));
 
   const sortByPosition = (a: Player, b: Player) =>
@@ -25,6 +26,7 @@ export const useTeam = createSharedComposable(() => {
   const message = ref<string | null>(null);
   const loading = ref({
     players: true,
+    teamInfos: true,
   });
 
   const isSubstituting = computed(
@@ -43,13 +45,24 @@ export const useTeam = createSharedComposable(() => {
     return [];
   });
 
+  async function teamInfos() {
+    try {
+      loading.value.teamInfos = true;
+      const { data } = await crudService.list<any>("team");
+      myTeam.value = data;
+    } catch(e: any) {
+      console.error("Erro ao carregar useTeam teamInfos:", e.message ?? e);
+    }
+    finally {
+      loading.value.teamInfos = false;
+    }
+  }
+
   async function loadPlayers() {
     try {
       loading.value.players = true;
       const { data } = await crudService.list<any>("player");
-      console.log(data)
       players.value = data;
-      
     } catch (e: any) {
       console.error("Erro ao carregar useTeam loadPlayers:", e.message ?? e);
       throw e;
@@ -142,6 +155,8 @@ export const useTeam = createSharedComposable(() => {
 
   return {
     mode,
+    myTeam,
+    loading,
     players,
     message,
     starters,
@@ -150,6 +165,7 @@ export const useTeam = createSharedComposable(() => {
     selectedIn,
     isSubstituting,
     highlightedIn,
+    teamInfos,
     loadPlayers,
     handleSubstitutionClick,
     confirmSubstitution,

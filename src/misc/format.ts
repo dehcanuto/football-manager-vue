@@ -12,6 +12,23 @@ export function MoneyFormat(money: string | number): string {
 }
 
 /**
+ * Formata um número para o padrão brasileiro, usando ponto como separador de milhar
+ * e vírgula como separador decimal.
+ *
+ * @example
+ * ```ts
+ * formatNumber(1000); // "1.000"
+ * formatNumber(1234567.89); // "1.234.567,89"
+ * ```
+ *
+ * @param value - O número que deve ser formatado.
+ * @returns O número formatado como string no padrão brasileiro.
+ */
+export function formatNumber(value: number): string {
+  return value.toLocaleString("pt-BR");
+}
+
+/**
  * Garante que o valor fornecido é um número finito.
  *
  * Se o valor for `NaN`, `Infinity`, `-Infinity`, `null`, `undefined`

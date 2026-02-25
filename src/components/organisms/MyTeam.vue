@@ -1,5 +1,22 @@
 <script setup lang="ts">
+import { computed, onMounted } from "vue";
+
+import FieldInfo from '@components/molecules/FieldInfo.vue'
 import BaseCard from "@components/molecules/BaseCard.vue";
+import { useTeam } from "@/composables/team";
+import { formatNumber, MoneyFormat } from "@/misc";
+
+const {
+  loading,
+  myTeam,
+  teamInfos
+} = useTeam();
+
+const supporters = computed(() => formatNumber(myTeam?.value?.supporters || 0));
+const balance = computed(() => MoneyFormat(myTeam?.value?.balance || 0));
+const morale = computed(() => `${myTeam?.value?.morale || 0}%`);
+
+onMounted(teamInfos);
 </script>
 <template>
   <BaseCard>
@@ -10,30 +27,18 @@ import BaseCard from "@components/molecules/BaseCard.vue";
           <div class="flex flex-col items-center text-center gap-3 mt-4">
             <div
               class="w-16 h-16 rounded-full border-4 border-white flex items-center justify-center overflow-hidden shrink-0"
-              :style="{ backgroundColor: '#ff0000' }"
+              :style="{ backgroundColor: myTeam?.colors.primary }"
             >
-              <span class="text-2xl text-white font-bold"> N </span>
+              <span class="text-2xl text-white font-bold">{{ myTeam?.abbreviation }}</span>
             </div>
-            <h2 class="text-2xl text-white font-bold">Náutico</h2>
+            <h2 class="text-2xl text-white font-bold">{{ myTeam?.name}}</h2>
           </div>
         </div>
         <div class="col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-3">
-          <div class="flex flex-col justify-center">
-            <span class="text-sm">Estádio</span>
-            <span class="text-lg text-white">Aflitos</span>
-          </div>
-          <div class="flex flex-col justify-center">
-            <span class="text-sm">Torcedores</span>
-            <span class="text-lg text-white">1.322.255</span>
-          </div>
-          <div class="flex flex-col justify-center">
-            <span class="text-sm">Saldo</span>
-            <span class="text-lg text-white">R$ 2.245.122,68</span>
-          </div>
-          <div class="flex flex-col justify-center">
-            <span class="text-sm">Moral</span>
-            <span class="text-lg text-green-400">98%</span>
-          </div>
+          <FieldInfo label="Estádio" :value="myTeam?.stadium" :loading="loading.teamInfos" />
+          <FieldInfo label="Torcedores" :value="supporters" :loading="loading.teamInfos" />
+          <FieldInfo label="Saldo" :value="balance" :loading="loading.teamInfos" />
+          <FieldInfo label="Moral" :value="morale" :loading="loading.teamInfos" />
         </div>
       </div>
     </template>
