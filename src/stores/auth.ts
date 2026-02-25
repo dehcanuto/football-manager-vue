@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 
 import { authService } from "@/services/auth";
-import type { AuthState } from "@/models/auth";
+import type { AuthState, AuthValues, LoginResponse } from "@/models/auth";
 
 export const useAuthStore = defineStore("auth", {
   state: (): AuthState => ({
@@ -14,20 +14,21 @@ export const useAuthStore = defineStore("auth", {
     getMe: (state: AuthState) => state.user && JSON.parse(state.user),
   },
   actions: {
-    async login(credentials: { email: string; password: string }) {
+    async login(credentials: AuthValues) {
       this.isLoading = true;
       try {
-        const { data } = await authService.login(credentials);
+        const { data } = await authService.login(credentials) as { data: LoginResponse };
         const userInfo = JSON.stringify(data.user);
 
         this.user = userInfo;
-        this.token = data.token.accessToken;
+        this.token = data.access_token;
 
         localStorage.setItem("@dugout/user", userInfo);
-        localStorage.setItem("@dugout/token", data.token.accessToken);
+        localStorage.setItem("@dugout/token", data.access_token);
 
-        return data.token.accessToken;
+        return data.access_token;
       } catch (error) {
+        console.error('login error', error)
         throw new Error(`${error}`);
       } finally {
         this.isLoading = false;
@@ -37,7 +38,13 @@ export const useAuthStore = defineStore("auth", {
       this.isLoading = true;
       try {
         if (!this.token) throw new Error("No token found");
-        await authService.fetchUser();
+
+        const { data } = await authService.fetchUser();
+        const userInfo = JSON.stringify(data.user);
+
+        this.user = userInfo;
+        localStorage.setItem("@dugout/user", userInfo);
+
         return true;
       } catch (error) {
         this.logout();

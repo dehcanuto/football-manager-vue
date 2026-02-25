@@ -58,7 +58,9 @@ const radarData = computed(() => {
     "physical",
   ];
 
-  const dataValues = coreStats.map((attr) => player.value!.attributes[attr] ?? 0);
+  const dataValues = coreStats.map(
+    (attr) => player.value!.attributes[attr] ?? 0,
+  );
 
   return {
     labels: ["Velocidade", "Chute", "Passe", "Drible", "Defesa", "Físico"],
@@ -114,22 +116,22 @@ const radarOptions = {
           <div>
             <div class="flex items-center justify-between">
               <div class="text-gray-400">Saúde</div>
-              <span>{{ player.status.stamina }}%</span>
+              <span>{{ player.stamina }}%</span>
             </div>
             <progress
               class="progress progress-success w-full"
-              :value="player.status.stamina"
+              :value="player.stamina"
               max="100"
             ></progress>
           </div>
           <div>
             <div class="flex items-center justify-between">
               <div class="text-gray-400">Moral</div>
-              <span>{{ player.status.morale }}%</span>
+              <span>{{ player.morale }}%</span>
             </div>
             <progress
               class="progress progress-warning w-full"
-              :value="player.status.morale"
+              :value="player.morale"
               max="100"
             ></progress>
           </div>

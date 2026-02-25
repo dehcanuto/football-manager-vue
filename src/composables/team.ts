@@ -4,6 +4,7 @@ import { createSharedComposable } from "@vueuse/core";
 import { Nautico } from "@/data/teams";
 import { Player } from "@/models/team";
 import { groups, positionOrder } from "@/constants/team";
+import { crudService } from "@/services/crud";
 
 export const useTeam = createSharedComposable(() => {
   const players = ref<Player[]>(JSON.parse(JSON.stringify(Nautico.players)));
@@ -22,6 +23,9 @@ export const useTeam = createSharedComposable(() => {
   const selectedIn = ref<Player | null>(null);
   const mode = ref<"starter" | "reserve" | null>(null);
   const message = ref<string | null>(null);
+  const loading = ref({
+    players: true,
+  });
 
   const isSubstituting = computed(
     () => !!selectedOut.value || !!selectedIn.value,
@@ -38,6 +42,21 @@ export const useTeam = createSharedComposable(() => {
     }
     return [];
   });
+
+  async function loadPlayers() {
+    try {
+      loading.value.players = true;
+      const { data } = await crudService.list<any>("player");
+      console.log(data)
+      players.value = data;
+      
+    } catch (e: any) {
+      console.error("Erro ao carregar useTeam loadPlayers:", e.message ?? e);
+      throw e;
+    } finally {
+      loading.value.players = false;
+    }
+  }
 
   function handleSubstitutionClick(
     player: Player,
@@ -131,6 +150,7 @@ export const useTeam = createSharedComposable(() => {
     selectedIn,
     isSubstituting,
     highlightedIn,
+    loadPlayers,
     handleSubstitutionClick,
     confirmSubstitution,
     cancelSubstitution,

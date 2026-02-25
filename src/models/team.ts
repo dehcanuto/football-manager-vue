@@ -50,11 +50,6 @@ export interface PlayerFinances {
   contractTime: number;
 }
 
-export interface PlayerStatus {
-  stamina: number;
-  morale: number;
-}
-
 export interface PlayerTrainning {
   id: number;
   name: string;
@@ -70,7 +65,8 @@ export interface Player {
   name: string;
   nationality: string;
   age: number;
-  status: PlayerStatus;
+  stamina: number;
+  morale: number;
   position: Position;
   height: number;
   attributes: Attributes;

@@ -14,7 +14,8 @@ export const Nautico: Team = {
       nationality: "BR",
       age: 33,
       height: 190,
-      status: { stamina: 100, morale: 100 },
+      stamina: 100,
+      morale: 100,
       attributes: {
         pace: 20,
         shooting: 12,
@@ -47,7 +48,8 @@ export const Nautico: Team = {
       nationality: "BR",
       age: 28,
       height: 178,
-      status: { stamina: 100, morale: 100 },
+      stamina: 100,
+      morale: 100,
       attributes: {
         pace: 72,
         shooting: 30,
@@ -80,7 +82,8 @@ export const Nautico: Team = {
       nationality: "BR",
       age: 27,
       height: 185,
-      status: { stamina: 100, morale: 100 },
+      stamina: 100,
+      morale: 100,
       attributes: {
         pace: 68,
         shooting: 32,
@@ -113,7 +116,8 @@ export const Nautico: Team = {
       nationality: "BR",
       age: 26,
       height: 183,
-      status: { stamina: 100, morale: 100 },
+      stamina: 100,
+      morale: 100,
       attributes: {
         pace: 66,
         shooting: 28,
@@ -146,7 +150,8 @@ export const Nautico: Team = {
       nationality: "BR",
       age: 25,
       height: 180,
-      status: { stamina: 100, morale: 100 },
+      stamina: 100,
+      morale: 100,
       attributes: {
         pace: 70,
         shooting: 32,
@@ -179,7 +184,8 @@ export const Nautico: Team = {
       nationality: "BR",
       age: 27,
       height: 175,
-      status: { stamina: 100, morale: 100 },
+      stamina: 100,
+      morale: 100,
       attributes: {
         pace: 74,
         shooting: 64,
@@ -212,7 +218,8 @@ export const Nautico: Team = {
       nationality: "BR",
       age: 24,
       height: 176,
-      status: { stamina: 100, morale: 100 },
+      stamina: 100,
+      morale: 100,
       attributes: {
         pace: 75,
         shooting: 67,
@@ -245,7 +252,8 @@ export const Nautico: Team = {
       nationality: "BR",
       age: 30,
       height: 174,
-      status: { stamina: 100, morale: 100 },
+      stamina: 100,
+      morale: 100,
       attributes: {
         pace: 80,
         shooting: 77,
@@ -278,7 +286,8 @@ export const Nautico: Team = {
       nationality: "BR",
       age: 31,
       height: 178,
-      status: { stamina: 100, morale: 100 },
+      stamina: 100,
+      morale: 100,
       attributes: {
         pace: 85,
         shooting: 82,
@@ -311,7 +320,8 @@ export const Nautico: Team = {
       nationality: "BR",
       age: 30,
       height: 177,
-      status: { stamina: 100, morale: 100 },
+      stamina: 100,
+      morale: 100,
       attributes: {
         pace: 80,
         shooting: 78,
@@ -344,7 +354,8 @@ export const Nautico: Team = {
       nationality: "BR",
       age: 34,
       height: 180,
-      status: { stamina: 100, morale: 100 },
+      stamina: 100,
+      morale: 100,
       attributes: {
         pace: 82,
         shooting: 80,
@@ -375,7 +386,8 @@ export const Nautico: Team = {
       shirtNumber: 55,
       name: "Gaston Curuceaca",
       position: "GK",
-      status: { stamina: 100, morale: 100 },
+      stamina: 100,
+      morale: 100,
       starting: false,
       attributes: {
         pace: 18,
@@ -406,7 +418,8 @@ export const Nautico: Team = {
       shirtNumber: 13,
       name: "Gabriel Índio",
       position: "DEF",
-      status: { stamina: 100, morale: 100 },
+      stamina: 100,
+      morale: 100,
       starting: false,
       attributes: {
         pace: 68,
@@ -437,7 +450,8 @@ export const Nautico: Team = {
       shirtNumber: 43,
       name: "Wanderson",
       position: "MID",
-      status: { stamina: 100, morale: 100 },
+      stamina: 100,
+      morale: 100,
       starting: false,
       attributes: {
         pace: 74,
@@ -468,7 +482,8 @@ export const Nautico: Team = {
       shirtNumber: 5,
       name: "Auremir",
       position: "MID",
-      status: { stamina: 100, morale: 100 },
+      stamina: 100,
+      morale: 100,
       starting: false,
       attributes: {
         pace: 70,
@@ -499,7 +514,8 @@ export const Nautico: Team = {
       shirtNumber: 27,
       name: "Luiz Felipe",
       position: "DEF",
-      status: { stamina: 100, morale: 100 },
+      stamina: 100,
+      morale: 100,
       starting: false,
       attributes: {
         pace: 67,
@@ -530,7 +546,8 @@ export const Nautico: Team = {
       shirtNumber: 98,
       name: "Felipe Saraiva",
       position: "FWD",
-      status: { stamina: 100, morale: 100 },
+      stamina: 100,
+      morale: 100,
       starting: false,
       attributes: {
         pace: 78,
@@ -561,7 +578,8 @@ export const Nautico: Team = {
       shirtNumber: 28,
       name: "Pedro Ricardo",
       position: "MID",
-      status: { stamina: 100, morale: 100 },
+      stamina: 100,
+      morale: 100,
       starting: false,
       attributes: {
         pace: 71,
@@ -592,7 +610,8 @@ export const Nautico: Team = {
       shirtNumber: 29,
       name: "Guilherme Ramos",
       position: "DEF",
-      status: { stamina: 100, morale: 100 },
+      stamina: 100,
+      morale: 100,
       starting: false,
       attributes: {
         pace: 66,
@@ -623,7 +642,8 @@ export const Nautico: Team = {
       shirtNumber: 30,
       name: "Kayon",
       position: "FWD",
-      status: { stamina: 100, morale: 100 },
+      stamina: 100,
+      morale: 100,
       starting: false,
       attributes: {
         pace: 80,
@@ -654,7 +674,8 @@ export const Nautico: Team = {
       shirtNumber: 31,
       name: "Rosa",
       position: "MID",
-      status: { stamina: 100, morale: 100 },
+      stamina: 100,
+      morale: 100,
       starting: false,
       attributes: {
         pace: 72,
@@ -685,7 +706,8 @@ export const Nautico: Team = {
       shirtNumber: 34,
       name: "Samuel Otusanya",
       position: "FWD",
-      status: { stamina: 100, morale: 100 },
+      stamina: 100,
+      morale: 100,
       starting: false,
       attributes: {
         pace: 81,

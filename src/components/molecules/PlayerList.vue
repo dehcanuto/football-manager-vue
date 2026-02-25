@@ -71,7 +71,7 @@ const emit = defineEmits(["substitute"]);
           <Icon name="substitution" />
         </button>
       </div>
-      <Stamina :value="props.status.stamina" />
+      <Stamina :value="props.stamina" />
     </div>
   </div>
 </template>

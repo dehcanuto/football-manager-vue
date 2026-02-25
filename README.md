@@ -8,7 +8,6 @@
 ![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-3.0-38B2AC.svg?style=flat-square&logo=tailwindcss)
 ![DaisyUI](https://img.shields.io/badge/DaisyUI-4.12.24-FE7C1D.svg?style=flat-square&logo=daisyui)
 
-
 Simulador tático e narrativo inspirado em **Brasfoot**, criado com **Vue 3 + TypeScript + Vite**.  
 Você comanda **Náutico** e **Sport** em partidas simuladas minuto a minuto, com:
 
@@ -31,7 +30,7 @@ Você comanda **Náutico** e **Sport** em partidas simuladas minuto a minuto, co
 | 🧩 **Vue 3 (Composition API)** | Framework principal                                     |
 | 💬 **TypeScript**              | Tipagem forte e previsível                              |
 | 🎨 **TailwindCSS + DaisyUI**   | Estilização moderna e responsiva                        |
-| ⚡ **Sim Engine custom**        | Cálculo probabilístico com atributos reais de jogadores |
+| ⚡ **Sim Engine custom**       | Cálculo probabilístico com atributos reais de jogadores |
 
 ---
 

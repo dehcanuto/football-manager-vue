@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 import { useTeam } from "@/composables/team";
 
 import BaseTitle from "@/components/molecules/BaseTitle.vue";
@@ -17,10 +17,13 @@ const {
   selectedOut,
   highlightedIn,
   isSubstituting,
-  handleSubstitutionClick,
-  confirmSubstitution,
+  loadPlayers,
   cancelSubstitution,
+  confirmSubstitution,
+  handleSubstitutionClick,
 } = useTeam();
+
+onMounted(loadPlayers);
 </script>
 
 <template>
