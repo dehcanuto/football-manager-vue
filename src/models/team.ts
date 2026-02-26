@@ -97,7 +97,7 @@ export interface TeamInfos {
   colors: {
     primary: string;
     secondary: string;
-  }
+  };
 }
 
 export interface EventResult {

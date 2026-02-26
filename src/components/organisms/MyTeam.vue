@@ -1,16 +1,12 @@
 <script setup lang="ts">
 import { computed, onMounted } from "vue";
 
-import FieldInfo from '@components/molecules/FieldInfo.vue'
+import FieldInfo from "@components/molecules/FieldInfo.vue";
 import BaseCard from "@components/molecules/BaseCard.vue";
 import { useTeam } from "@/composables/team";
 import { formatNumber, MoneyFormat } from "@/misc";
 
-const {
-  loading,
-  myTeam,
-  teamInfos
-} = useTeam();
+const { loading, myTeam, teamInfos } = useTeam();
 
 const supporters = computed(() => formatNumber(myTeam?.value?.supporters || 0));
 const balance = computed(() => MoneyFormat(myTeam?.value?.balance || 0));
@@ -29,16 +25,34 @@ onMounted(teamInfos);
               class="w-16 h-16 rounded-full border-4 border-white flex items-center justify-center overflow-hidden shrink-0"
               :style="{ backgroundColor: myTeam?.colors.primary }"
             >
-              <span class="text-2xl text-white font-bold">{{ myTeam?.abbreviation }}</span>
+              <span class="text-2xl text-white font-bold">{{
+                myTeam?.abbreviation
+              }}</span>
             </div>
-            <h2 class="text-2xl text-white font-bold">{{ myTeam?.name}}</h2>
+            <h2 class="text-2xl text-white font-bold">{{ myTeam?.name }}</h2>
           </div>
         </div>
         <div class="col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-3">
-          <FieldInfo label="Estádio" :value="myTeam?.stadium" :loading="loading.teamInfos" />
-          <FieldInfo label="Torcedores" :value="supporters" :loading="loading.teamInfos" />
-          <FieldInfo label="Saldo" :value="balance" :loading="loading.teamInfos" />
-          <FieldInfo label="Moral" :value="morale" :loading="loading.teamInfos" />
+          <FieldInfo
+            label="Estádio"
+            :value="myTeam?.stadium"
+            :loading="loading.teamInfos"
+          />
+          <FieldInfo
+            label="Torcedores"
+            :value="supporters"
+            :loading="loading.teamInfos"
+          />
+          <FieldInfo
+            label="Saldo"
+            :value="balance"
+            :loading="loading.teamInfos"
+          />
+          <FieldInfo
+            label="Moral"
+            :value="morale"
+            :loading="loading.teamInfos"
+          />
         </div>
       </div>
     </template>

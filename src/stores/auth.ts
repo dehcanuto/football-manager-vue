@@ -17,7 +17,9 @@ export const useAuthStore = defineStore("auth", {
     async login(credentials: AuthValues) {
       this.isLoading = true;
       try {
-        const { data } = await authService.login(credentials) as { data: LoginResponse };
+        const { data } = (await authService.login(credentials)) as {
+          data: LoginResponse;
+        };
         const userInfo = JSON.stringify(data.user);
 
         this.user = userInfo;
@@ -28,7 +30,7 @@ export const useAuthStore = defineStore("auth", {
 
         return data.access_token;
       } catch (error) {
-        console.error('login error', error)
+        console.error("login error", error);
         throw new Error(`${error}`);
       } finally {
         this.isLoading = false;

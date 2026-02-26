@@ -2,7 +2,7 @@
 import { ref, computed } from "vue";
 
 const props = defineProps<{
-  items: string[] | { title?: string; text: string }[];
+  items: string[] | { title?: string; content: string }[];
   showControls?: boolean;
 }>();
 
@@ -30,7 +30,7 @@ const totalSlides = computed(() => props.items.length);
           {{ item.title }}
         </h2>
         <p class="text-base text-base-100">
-          {{ typeof item === "string" ? item : item.text }}
+          {{ typeof item === "string" ? item : item.content }}
         </p>
       </div>
     </div>

@@ -1,8 +1,10 @@
-import { IconName } from "@/components/atoms/Icon.vue";
+import { IconMessages } from "@/components/atoms/Icon.vue";
 
 export interface MessagesType {
-  icon: IconName;
-  date: string;
+  id: number;
+  type: IconMessages;
   title: string;
-  text: string;
+  content: string;
+  read: boolean;
+  createdAt: string;
 }

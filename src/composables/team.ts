@@ -50,10 +50,9 @@ export const useTeam = createSharedComposable(() => {
       loading.value.teamInfos = true;
       const { data } = await crudService.list<any>("team");
       myTeam.value = data;
-    } catch(e: any) {
+    } catch (e: any) {
       console.error("Erro ao carregar useTeam teamInfos:", e.message ?? e);
-    }
-    finally {
+    } finally {
       loading.value.teamInfos = false;
     }
   }

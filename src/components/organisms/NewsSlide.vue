@@ -1,14 +1,20 @@
 <script setup lang="ts">
+import { onMounted } from "vue";
+
 import BaseCard from "@components/molecules/BaseCard.vue";
 import BaseTextCarousel from "@components/molecules/BaseTextCarousel.vue";
 
-import { last_news } from "@/data/last_news";
+import { useMessages } from "@/composables/useMessages";
+
+const { messages, loading, fetchMessages } = useMessages();
+
+onMounted(fetchMessages);
 </script>
 <template>
   <BaseCard variant="primary">
     <template #title>Últimas Notícias</template>
     <template #content>
-      <BaseTextCarousel :items="last_news" :showControls="true" />
+      <BaseTextCarousel :items="messages" :showControls="true" />
     </template>
   </BaseCard>
 </template>
