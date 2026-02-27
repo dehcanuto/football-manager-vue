@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
 
-import { categories, categoryInfo } from "@/constants/news";
-import { last_news } from "@/data/last_news";
+import { categoryInfo } from "@/constants/news";
+import { NewsItem } from "@/models/news";
 
 const selectedCategory = ref("all");
 const searchQuery = ref("");
 
-const news = ref(last_news);
+const news = ref<NewsItem[]>([]);
 
 const filteredNews = computed(() => {
   return news.value.filter((n) => {
@@ -27,7 +27,7 @@ const filteredNews = computed(() => {
       class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4"
     >
       <div>
-        <h1 class="text-2xl font-bold text-gray-100">🗞️ Sala de Imprensa</h1>
+        <h1 class="text-2xl font-bold text-gray-100">Sala de Imprensa</h1>
         <p class="text-sm text-gray-400">
           Fique por dentro das últimas notícias e acontecimentos do futebol.
         </p>
@@ -68,7 +68,7 @@ const filteredNews = computed(() => {
             </span>
           </div>
           <h3 class="card-title text-base text-gray-100">{{ n.title }}</h3>
-          <p class="text-sm text-gray-400 mb-3">{{ n.text }}</p>
+          <p class="text-sm text-gray-400 mb-3">{{ n.content }}</p>
           <div class="card-actions justify-end">
             <button class="btn btn-xs btn-outline">Ler mais</button>
           </div>

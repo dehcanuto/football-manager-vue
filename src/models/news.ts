@@ -12,7 +12,7 @@ export type NewsCategory =
 export interface NewsItem {
   id: number;
   title: string;
-  text: string;
+  content: string;
   date: string;
   category: NewsCategory;
 }

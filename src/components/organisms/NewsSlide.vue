@@ -4,17 +4,16 @@ import { onMounted } from "vue";
 import BaseCard from "@components/molecules/BaseCard.vue";
 import BaseTextCarousel from "@components/molecules/BaseTextCarousel.vue";
 
-import { useMessages } from "@/composables/useMessages";
+import { useNews } from "@/composables/useNews";
 
-const { messages, loading, fetchMessages } = useMessages();
-
-onMounted(fetchMessages);
+const { news, loading, fetchNews } = useNews();
+onMounted(fetchNews);
 </script>
 <template>
-  <BaseCard variant="primary">
+  <BaseCard variant="primary" class="h-full">
     <template #title>Últimas Notícias</template>
     <template #content>
-      <BaseTextCarousel :items="messages" :showControls="true" />
+      <BaseTextCarousel :items="news" :showControls="true" />
     </template>
   </BaseCard>
 </template>

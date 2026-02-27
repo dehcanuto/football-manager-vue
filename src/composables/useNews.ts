@@ -1,6 +1,5 @@
 import { ref } from "vue";
 import { createSharedComposable } from "@vueuse/core";
-import axios from "axios";
 
 import type { NewsItem, NewsCategory } from "@/models/news";
 import { crudService } from "@/services/crud";
@@ -17,7 +16,7 @@ export const useNews = createSharedComposable(() => {
     selectedCategory.value = category;
     try {
       const { data } = await crudService.list<any>("news", { category });
-      news.value = data?.data || [];
+      news.value = data || [];
     } catch (err) {
       console.error(err);
       error.value = "Erro ao carregar notícias.";
