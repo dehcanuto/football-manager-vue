@@ -1,6 +1,6 @@
 import { ref } from "vue";
 import { createSharedComposable } from "@vueuse/core";
-import axios from "axios";
+
 import { MessagesType } from "@/models/messages";
 import { crudService } from "@/services/crud";
 
