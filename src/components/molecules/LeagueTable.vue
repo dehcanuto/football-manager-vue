@@ -11,9 +11,9 @@ const props = defineProps<{
 
 const columns: ColumnType[] = [
   { key: "position", label: "#", align: "center", width: "40px" },
-  { key: "name", label: "Clube" },
+  { key: "team", label: "Clube" },
   { key: "points", label: "Pts", align: "center" },
-  { key: "played", label: "PJ", align: "center" },
+  { key: "matchesPlayed", label: "PJ", align: "center" },
   { key: "wins", label: "VIT", align: "center" },
   { key: "draws", label: "E", align: "center" },
   { key: "losses", label: "DER", align: "center" },

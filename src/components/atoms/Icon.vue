@@ -11,7 +11,6 @@ import TrainningIcon from "./icons/Trainning.vue";
 import BusinessManIcon from "./icons/BusinessMan.vue";
 import MegaphoneIcon from "./icons/Megaphone.vue";
 
-
 const message_icons = {
   system: MegaphoneIcon,
   player: PlayersIcon,

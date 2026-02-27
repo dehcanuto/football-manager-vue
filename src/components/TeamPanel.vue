@@ -45,7 +45,7 @@ const props = defineProps<{ team: Team }>();
           </div>
         </div>
 
-        <Stamina :value="p.status.stamina" />
+        <Stamina :value="p.stamina" />
       </div>
     </div>
   </div>

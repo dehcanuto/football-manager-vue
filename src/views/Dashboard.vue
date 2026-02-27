@@ -19,8 +19,10 @@ import RankingTable from "@components/organisms/RankingTable.vue";
     <div class="grid grid-cols-1 sm:grid-cols-2 items-center gap-4">
       <MyTeam />
       <NewsSlide />
-      <MessagesCard />
-      <NextGame />
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-5 items-center gap-4">
+      <MessagesCard class="col-span-2" />
+      <NextGame class="col-span-3" />
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-5 gap-4">
       <div class="flex flex-col col-span-2 gap-4">
