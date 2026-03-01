@@ -24,7 +24,7 @@ onMounted(fetchMessages);
               <Icon :name="message.type" />
             </div>
             <div class="flex flex-col flex-grow ml-3 mr-10 gap-1">
-              <div class="text-secondary text-sm font-medium">
+              <div class="text-primary text-sm font-medium">
                 {{ message.title }} <span class="text-white/50 text-xs">• {{ formatRelative(message.createdAt) }}</span>
               </div>
               <div class="text-xs">{{ message.content }}</div>

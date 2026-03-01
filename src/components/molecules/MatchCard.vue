@@ -1,17 +1,25 @@
 <script setup lang="ts">
+import { computed } from 'vue';
+
 interface MatchStatus {
+  id: number;
   name: string;
-  color: string;
-  logo?: string;
-  link?: string;
-  score?: number;
+  abbreviation: string;
+  colorPrimary: string;
+  colorSecondary: string;
+  colorTertiary: string;
 }
 
 const props = defineProps<{
-  home: MatchStatus;
-  away: MatchStatus;
+  status: string;
+  homeScore?: number;
+  awayScore?: number;
+  homeTeam: MatchStatus;
+  awayTeam: MatchStatus;
   size?: "medium" | "small";
 }>();
+
+const hasScore = computed(() => props.status === "FINISHED")
 </script>
 
 <template>
@@ -21,25 +29,25 @@ const props = defineProps<{
   >
     <div class="team team--home">
       <div class="team__name">
-        <RouterLink :to="home.link || '#'">{{ home.name }}</RouterLink>
+        <RouterLink to="#">{{ homeTeam.name }}</RouterLink>
       </div>
-      <div class="team__badge" :style="{ backgroundColor: home.color }">
-        <span>{{ home.name[0] }}</span>
+      <div class="team__badge" :style="{ backgroundColor: homeTeam.colorPrimary }">
+        <span>{{ homeTeam.abbreviation }}</span>
       </div>
     </div>
 
     <div class="score">
-      <span v-show="home.score != null">{{ home.score }}</span>
+      <span v-show="hasScore">{{ homeScore }}</span>
       <span class="score__separator">X</span>
-      <span v-show="away.score != null">{{ away.score }}</span>
+      <span v-show="hasScore">{{ awayScore }}</span>
     </div>
 
     <div class="team team--away">
-      <div class="team__badge" :style="{ backgroundColor: away.color }">
-        <span>{{ away.name[0] }}</span>
+      <div class="team__badge" :style="{ backgroundColor: awayTeam.colorPrimary }">
+        <span>{{ awayTeam.abbreviation }}</span>
       </div>
       <div class="team__name">
-        <RouterLink :to="away.link || '#'">{{ away.name }}</RouterLink>
+        <RouterLink to="#">{{ awayTeam.name }}</RouterLink>
       </div>
     </div>
   </div>
@@ -95,7 +103,7 @@ const props = defineProps<{
 
       span {
         color: white;
-        font-size: 1.75rem;
+        font-size: 1.25rem;
         font-weight: bold;
       }
     }
@@ -176,7 +184,7 @@ const props = defineProps<{
         border-width: 2px;
 
         span {
-          font-size: 1rem;
+          font-size: 0.70rem;
         }
       }
     }

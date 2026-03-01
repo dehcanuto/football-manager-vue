@@ -30,16 +30,8 @@ onMounted(getNextMatch);
         </div>
         <MatchCard
           v-if="nextGame"
-          :home="{
-            name: nextGame?.awayTeam.name,
-            color: nextGame?.awayTeam.colorPrimary,
-            link: `/equipe/${nextGame?.awayTeam.id}`,
-          }"
-          :away="{
-            name: nextGame?.homeTeam.name,
-            color: nextGame?.homeTeam.colorPrimary,
-            link: `/equipe/${nextGame?.homeTeam.id}`,
-          }"
+          :homeTeam="nextGame?.homeTeam"
+          :awayTeam="nextGame?.awayTeam"
         />
         <span>{{ nextGame?.homeTeam.stadium.name }}</span>
       </div>

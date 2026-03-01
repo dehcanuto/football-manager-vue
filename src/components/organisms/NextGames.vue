@@ -1,24 +1,22 @@
 <script setup lang="ts">
-import { computed, onMounted } from "vue";
-
-import { formatFull } from "@/misc";
-
-import { useChampionship } from "@/composables/useChampionship";
 import BaseCard from "@components/molecules/BaseCard.vue";
 import MatchCard from "@components/molecules/MatchCard.vue";
 import { lastGames } from "@/data/last_games";
+import { useChampionship } from "@/composables/useChampionship";
+import { computed, onMounted } from "vue";
+import { formatShort } from "@/misc";
 
-const { lastTeamsGames, loading, getLastMatches } = useChampionship();
+const { nextTeamsGames, loading, getNextMatches } = useChampionship();
 
 const scheduledAt = computed(
-  () => lastTeamsGames?.value && formatFull(lastTeamsGames?.value.date),
+  () => nextTeamsGames?.value && formatShort(nextTeamsGames?.value.date),
 );
 
-onMounted(getLastMatches);
+onMounted(getNextMatches);
 </script>
 <template>
-  <BaseCard v-if="lastTeamsGames">
-    <template #title>Últimos Jogos</template>
+  <BaseCard v-if="nextTeamsGames">
+    <template #title>Próximos Jogos da rodada</template>
     <template #content>
       <div class="flex items-center justify-between mb-4">
         <div>
@@ -31,7 +29,7 @@ onMounted(getLastMatches);
         </div>
       </div>
       <ul class="py-3 bg-base-100 rounded-lg">
-        <li v-for="game in lastTeamsGames.matches" class="">
+        <li v-for="game in nextTeamsGames.matches" class="">
           <MatchCard size="small" v-bind="game" />
         </li>
       </ul>

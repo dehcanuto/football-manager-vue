@@ -48,3 +48,8 @@ export interface NextMatch {
     };
   };
 }
+
+export interface NextMatches {
+  date: string;
+  matches: NextMatch[];
+}

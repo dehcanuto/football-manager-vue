@@ -32,7 +32,7 @@ const getTeamStatusColor = (position: number): string => {
 
 <template>
   <BaseTable :columns="columns" :rows="teams" hoverable>
-    <template #cell-name="{ row }">
+    <template #cell-team="{ row }">
       <div class="flex items-center gap-2">
         <div
           class="h-5 w-1 -ml-2.5 rounded-full"
@@ -44,7 +44,7 @@ const getTeamStatusColor = (position: number): string => {
           alt="Logo"
           class="w-6 h-6 rounded-full object-cover"
         />
-        <span>{{ row.name }}</span>
+        <span>{{ row.team }}</span>
       </div>
     </template>
     <template #cell-goalDifference="{ row }">

@@ -4,7 +4,7 @@ import { computed, onMounted } from "vue";
 import FieldInfo from "@components/molecules/FieldInfo.vue";
 import BaseCard from "@components/molecules/BaseCard.vue";
 import { useTeam } from "@/composables/team";
-import { formatNumber, MoneyFormat } from "@/misc";
+import { formatNumber, getMoraleStatus, MoneyFormat } from "@/misc";
 
 const { loading, myTeam, teamInfos } = useTeam();
 
@@ -48,11 +48,15 @@ onMounted(teamInfos);
             :value="balance"
             :loading="loading.teamInfos"
           />
-          <FieldInfo
-            label="Moral"
-            :value="morale"
-            :loading="loading.teamInfos"
-          />
+          <div v-if="myTeam" class="flex flex-col justify-center">
+            <span class="text-sm">Moral</span>
+            <span 
+              class="w-fit tooltip tooltip-primary tooltip-bottom"
+              :data-tip="getMoraleStatus(myTeam.morale).label"
+              :class="getMoraleStatus(myTeam.morale).color">
+              {{ morale }}
+            </span>
+          </div>
         </div>
       </div>
     </template>
